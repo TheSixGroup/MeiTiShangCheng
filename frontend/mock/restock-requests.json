@@ -1,0 +1,59 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "list": [
+      {
+        "id": 3001,
+        "inventoryId": 2003,
+        "inventoryName": "Smart Watch S2",
+        "sku": "PRD-003",
+        "quantity": 20,
+        "status": "pending",
+        "requesterId": 1042,
+        "requesterName": "Li Wei",
+        "reason": "已售罄，急需补货",
+        "createdAt": "2026-10-18T09:30:00Z",
+        "processedAt": null,
+        "processedBy": null,
+        "completedAt": null
+      },
+      {
+        "id": 3002,
+        "inventoryId": 2002,
+        "inventoryName": "Wireless Earbuds X1",
+        "sku": "PRD-002",
+        "quantity": 30,
+        "status": "processing",
+        "requesterId": 1048,
+        "requesterName": "Huang Xin",
+        "reason": "库存低于最低值",
+        "createdAt": "2026-10-17T14:20:00Z",
+        "processedAt": "2026-10-18T08:00:00Z",
+        "processedBy": 1046,
+        "processedByName": "Sun Yue",
+        "completedAt": null
+      },
+      {
+        "id": 3003,
+        "inventoryId": 2006,
+        "inventoryName": "Phone Case - Clear",
+        "sku": "PRD-006",
+        "quantity": 30,
+        "status": "completed",
+        "requesterId": 1045,
+        "requesterName": "Zhao Lei",
+        "reason": "库存不足",
+        "createdAt": "2026-10-10T11:00:00Z",
+        "processedAt": "2026-10-11T09:00:00Z",
+        "processedBy": 1044,
+        "processedByName": "Wang Hao",
+        "completedAt": "2026-10-12T15:30:00Z"
+      }
+    ],
+    "total": 3,
+    "page": 1,
+    "pageSize": 10,
+    "totalPages": 1
+  }
+}

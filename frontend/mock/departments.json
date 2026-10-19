@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    { "id": 1, "name": "Sales", "code": "sales", "employeeCount": 12 },
+    { "id": 2, "name": "Warehouse", "code": "warehouse", "employeeCount": 4 },
+    { "id": 3, "name": "HR", "code": "hr", "employeeCount": 2 },
+    { "id": 4, "name": "Management", "code": "management", "employeeCount": 1 }
+  ]
+}
