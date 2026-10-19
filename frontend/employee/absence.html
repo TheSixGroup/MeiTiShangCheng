@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Absence - Meitǐ Shāngchéng Employee Portal</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">美</div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="sidebar-brand-sub">Employee Shift Portal</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="shifts.html" class="nav-item">
+          <span class="nav-item-icon">📅</span>
+          <span class="nav-item-text">My shift schedule</span>
+          <span class="nav-item-code">UC-E02</span>
+        </a>
+        <a href="calendar.html" class="nav-item">
+          <span class="nav-item-icon">📆</span>
+          <span class="nav-item-text">Monthly calendar</span>
+          <span class="nav-item-code">UC-E03</span>
+        </a>
+        <a href="hours.html" class="nav-item">
+          <span class="nav-item-icon">⏱️</span>
+          <span class="nav-item-text">Working hours</span>
+          <span class="nav-item-code">UC-E04</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-item-icon">👤</span>
+          <span class="nav-item-text">Personal data</span>
+          <span class="nav-item-code">UC-E05</span>
+        </a>
+        <a href="absence.html" class="nav-item active">
+          <span class="nav-item-icon">📝</span>
+          <span class="nav-item-text">Report absence</span>
+          <span class="nav-item-code">UC-E07</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="login.html" class="nav-item">
+          <span class="nav-item-icon">🚪</span>
+          <span class="nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-name">Li Wei · #1042</div>
+        <div class="sidebar-user-role">Role: Employee · view-only</div>
+        <div class="sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-breadcrumb">
+          <span class="breadcrumb-item">Employee portal</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item current">Report absence</span>
+        </div>
+        <div class="header-right">
+          <div class="header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="header-notifications">
+            <span>🔔</span>
+            <span class="notification-dot"></span>
+          </div>
+          <div class="header-user">
+            <div class="user-avatar">LW</div>
+            <span class="user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header">
+          <h1 class="page-title">Report an absence</h1>
+          <p class="page-subtitle">Let your manager know if you cannot work a scheduled shift</p>
+        </div>
+
+        <div class="content-grid two-col">
+          <div>
+            <!-- Absence Form -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">New absence request</div>
+                  <div class="profile-card-subtitle">Fill in the details below. Your request will be sent to HR for approval.</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <!-- Type Selector -->
+                <div class="form-group">
+                  <label class="form-label">Type of absence <span class="required">*</span></label>
+                  <div class="absence-type-selector">
+                    <div class="absence-type-card selected" onclick="selectType(this, 'sick')">
+                      <div class="absence-type-icon">🤒</div>
+                      <div class="absence-type-name">Sick day</div>
+                      <div class="absence-type-desc">Illness or medical appointment</div>
+                      <div class="absence-balance">
+                        <strong>5</strong> sick days / year · <strong>3</strong> used
+                      </div>
+                    </div>
+                    <div class="absence-type-card" onclick="selectType(this, 'personal')">
+                      <div class="absence-type-icon">📋</div>
+                      <div class="absence-type-name">Personal leave</div>
+                      <div class="absence-type-desc">Personal matters, unpaid</div>
+                      <div class="absence-balance">
+                        <strong>10</strong> days / year · <strong>3</strong> used
+                      </div>
+                    </div>
+                    <div class="absence-type-card" onclick="selectType(this, 'other')">
+                      <div class="absence-type-icon">📌</div>
+                      <div class="absence-type-name">Other</div>
+                      <div class="absence-type-desc">Bereavement, jury duty, etc.</div>
+                      <div class="absence-balance">
+                        Requires manager approval
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Date & Duration -->
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Start date <span class="required">*</span></label>
+                    <input type="date" class="form-control" value="2026-10-16">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">End date <span class="required">*</span></label>
+                    <input type="date" class="form-control" value="2026-10-16">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <select class="form-control">
+                      <option>Full day</option>
+                      <option>Morning only (08:00–12:00)</option>
+                      <option>Afternoon only (12:00–16:00)</option>
+                      <option>Evening only (16:00–20:00)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Total days</label>
+                    <input type="text" class="form-control" value="1 day" disabled>
+                  </div>
+                </div>
+
+                <!-- Affected Shifts -->
+                <div class="form-group" style="margin-top: 16px;">
+                  <label class="form-label">Affected shifts</label>
+                  <div class="alert alert-info" style="margin-bottom: 0;">
+                    <strong>Wed 14 Oct</strong> — Evening 16:00–20:00 (Cashier)
+                    <br>
+                    This shift will need a replacement. The Workflow Manager will be notified.
+                  </div>
+                </div>
+
+                <!-- Reason -->
+                <div class="form-group" style="margin-top: 16px;">
+                  <label class="form-label">Reason / description <span class="required">*</span></label>
+                  <textarea class="form-control" rows="4" placeholder="Please describe the reason for your absence...">Not feeling well since last night, likely flu. Will see a doctor this morning and provide a medical certificate if needed.</textarea>
+                  <div class="form-text">Please provide enough detail for your manager to understand the situation.</div>
+                </div>
+
+                <!-- Contact -->
+                <div class="form-group">
+                  <label class="form-label">Contact during absence</label>
+                  <input type="tel" class="form-control" value="+86 137 **** 9012">
+                  <div class="form-text">Your manager may call you for follow-up questions.</div>
+                </div>
+
+                <!-- Submit -->
+                <div style="display: flex; gap: 12px; margin-top: 20px;">
+                  <button class="btn btn-primary" onclick="alert('Absence request submitted!')">Submit request</button>
+                  <button class="btn btn-secondary" onclick="location.href='shifts.html'">Cancel</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Requests -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Recent requests</div>
+                  <div class="profile-card-subtitle">Your last 5 absence requests</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <ul class="absence-history">
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">08</div>
+                      <div class="absence-date-month">Oct</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Sick day — 1 day</div>
+                      <div class="absence-item-detail">Flu symptoms · reported same day at 07:20</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">15</div>
+                      <div class="absence-date-month">Sep</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Personal leave — 1 day</div>
+                      <div class="absence-item-detail">Family appointment · requested 3 days in advance</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">22</div>
+                      <div class="absence-date-month">Aug</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Sick day — 1 day</div>
+                      <div class="absence-item-detail">Headache and fatigue · reported same day</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="side-panel">
+            <!-- Leave Balance -->
+            <div class="info-card leave-balance-card">
+              <div class="info-card-title">Leave balance · 2026</div>
+              <div class="leave-balance-number">7</div>
+              <div class="leave-balance-label">days remaining</div>
+              <div class="leave-balance-breakdown">
+                <div>
+                  <span class="lbl">Sick days</span>
+                  <span class="val">2 / 5 left</span>
+                </div>
+                <div>
+                  <span class="lbl">Personal days</span>
+                  <span class="val">7 / 10 left</span>
+                </div>
+                <div>
+                  <span class="lbl">Pending requests</span>
+                  <span class="val">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guidelines -->
+            <div class="info-card">
+              <div class="info-card-title">Absence guidelines</div>
+              <ul style="list-style: none; padding: 0; font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color-light);">
+                  <strong>Sick days:</strong> Report before your shift starts. Medical certificate required for 3+ consecutive days.
+                </li>
+                <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color-light);">
+                  <strong>Personal leave:</strong> Request at least 3 days in advance when possible.
+                </li>
+                <li style="padding: 6px 0;">
+                  <strong>Approval:</strong> HR reviews all requests within 24 hours on business days.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact HR -->
+            <div class="store-info-card">
+              <div class="store-info-title">Need help?</div>
+              <div class="store-info-text">
+                Contact HR:<br>
+                <strong>hr@meiti-sc.com</strong><br><br>
+                Or talk to your Workflow Manager <strong>Zhou Qi</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function selectType(element, type) {
+      document.querySelectorAll('.absence-type-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      element.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

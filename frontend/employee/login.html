@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Sign In - Meitǐ Shāngchéng</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-wrapper">
+    <!-- Left: Brand Panel -->
+    <div class="login-brand">
+      <div class="login-brand-header">
+        <div class="brand-logo">美</div>
+        <h1 class="brand-title">Meitǐ Shāngchéng</h1>
+        <p class="brand-subtitle">Employee Shift Portal</p>
+        <p class="brand-description">
+          Website 1 is the portal where store employees look at the shifts that were assigned to them. It never changes a schedule — planning happens in Website 2.
+        </p>
+      </div>
+
+      <div class="login-brand-footer">
+        <ul class="brand-features">
+          <li>My shifts, week and month view</li>
+          <li>My working hours per week</li>
+          <li>My personal data (read / update)</li>
+          <li>Report an absence (sick day)</li>
+          <li class="disabled">No shift editing, no other employee's data</li>
+        </ul>
+        <p class="brand-footer-note">
+          UI language: English only · colours follow the Meitǐ Shāngchéng / Jupiter brand identity
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="login-form-panel">
+      <div class="login-form-container">
+        <div class="login-form-header">
+          <h2 class="login-form-title">Employee sign in</h2>
+          <p class="login-form-subtitle">Website 1 · view-only portal</p>
+        </div>
+
+        <div class="login-error-box" id="loginError">
+          <strong>Error state — extension 1a:</strong> the e-mail or password is not correct. Attempt 2 of 5; after 5 attempts the account is blocked and must be released by HR.
+        </div>
+
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="email">Employee e-mail or employee ID</label>
+            <input type="text" class="form-control" id="email" value="li.wei@meiti-sc.com" placeholder="Enter your email or ID">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" value="**********" placeholder="Enter your password">
+          </div>
+
+          <div class="login-form-remember">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-login">Sign in</button>
+        </form>
+
+        <p class="login-forgot">
+          Forgot password? <a href="#">Ask the administration (HR)</a>
+        </p>
+
+        <div class="login-alt-action">
+          <button class="btn btn-secondary" onclick="window.location.href='../admin/login.html'">
+            Sign in as Workflow Manager (→ Website 2)
+          </button>
+          <p class="login-alt-note">
+            <span class="highlight">ⓘ</span> pre-condition of UC-E02 … UC-E07 ⓘ one login only: no "include login" arrow on every use case
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      // Mock login - redirect to shift schedule
+      window.location.href = 'shifts.html';
+    }
+  </script>
+</body>
+</html>

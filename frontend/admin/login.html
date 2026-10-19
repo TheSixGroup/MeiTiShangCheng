@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In - Meitǐ Shāngchéng</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="../employee/css/login.css">
+</head>
+<body>
+  <div class="login-wrapper">
+    <!-- Left: Brand Panel -->
+    <div class="login-brand">
+      <div class="login-brand-header">
+        <div class="brand-logo">美</div>
+        <h1 class="brand-title">Meitǐ Shāngchéng</h1>
+        <p class="brand-subtitle">Administration & Operations Portal</p>
+        <p class="brand-description">
+          Website 2 is the administration portal for HR, Workflow Managers, and Warehouse staff. Manage employees, create schedules, handle inventory, and view workforce statistics.
+        </p>
+      </div>
+
+      <div class="login-brand-footer">
+        <ul class="brand-features">
+          <li>Employee records management (HR)</li>
+          <li>Weekly shift planning & publishing</li>
+          <li>Store-wide schedule overview</li>
+          <li>Workforce statistics & reports</li>
+          <li>Inventory & restock management</li>
+        </ul>
+        <p class="brand-footer-note">
+          UI language: English only · colours follow the Meitǐ Shāngchéng / Jupiter brand identity
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="login-form-panel">
+      <div class="login-form-container">
+        <div class="login-form-header">
+          <h2 class="login-form-title">Administration sign in</h2>
+          <p class="login-form-subtitle">Website 2 · management portal</p>
+        </div>
+
+        <form class="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="role">Role</label>
+            <select class="form-control" id="role">
+              <option value="hr">HR Officer</option>
+              <option value="shift_manager">Workflow Manager</option>
+              <option value="warehouse">Warehouse Worker</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail or employee ID</label>
+            <input type="text" class="form-control" id="email" value="henriette@meiti-sc.com" placeholder="Enter your email or ID">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" value="**********" placeholder="Enter your password">
+          </div>
+
+          <div class="login-form-remember">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-login" onclick="handleLogin(event)">Sign in</button>
+        </form>
+
+  <script src="../shared/js/auth.js"></script>
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('role').value;
+      const email = document.getElementById('email').value;
+      const username = email.split('@')[0] || 'Admin';
+      
+      login(username, role);
+      
+      // Redirect to first allowed page for this role
+      const redirectMap = {
+        'hr': 'employees.html',
+        'shift_manager': 'shift-planner.html',
+        'warehouse': 'inventory.html'
+      };
+      window.location.href = redirectMap[role] || 'employees.html';
+    }
+
+    // If already logged in, redirect
+    if (isLoggedIn()) {
+      const role = getCurrentRole();
+      const redirectMap = {
+        'hr': 'employees.html',
+        'shift_manager': 'shift-planner.html',
+        'warehouse': 'inventory.html'
+      };
+      window.location.href = redirectMap[role] || 'employees.html';
+    }
+  </script>
+
+        <p class="login-forgot">
+          Forgot password? <a href="#">Ask the system administrator</a>
+        </p>
+
+        <div class="login-alt-action">
+          <button class="btn btn-secondary" onclick="window.location.href='../employee/login.html'">
+            ← Sign in as Employee (Website 1)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('role').value;
+      // Redirect based on role
+      window.location.href = 'employees.html';
+    }
+  </script>
+</body>
+</html>

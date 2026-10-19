@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee - Meitǐ Shāngchéng Admin</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="../employee/css/profile.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-brand">
+        <div class="admin-sidebar-logo">美</div>
+        <div class="admin-sidebar-brand-text">
+          <div class="admin-sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="admin-sidebar-brand-sub">Administration & Operations Portal</div>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-sub-label">Employees</div>
+        <a href="employees.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">👥</span>
+          <span class="admin-nav-item-text">Employee overview</span>
+          <span class="admin-nav-item-code">UC-A02</span>
+        </a>
+        <a href="employee-edit.html" class="admin-nav-item active">
+          <span class="admin-nav-item-icon">📋</span>
+          <span class="admin-nav-item-text">Manage records</span>
+          <span class="admin-nav-item-code">UC-A01</span>
+        </a>
+        <a href="employee-add.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">➕</span>
+          <span class="admin-nav-item-text">Add employee</span>
+          <span class="admin-nav-item-code">UC-A01a</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Scheduling</div>
+        <a href="shift-planner.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📅</span>
+          <span class="admin-nav-item-text">Shift planner</span>
+          <span class="admin-nav-item-code">UC-A03</span>
+        </a>
+        <a href="store-schedule.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">🏪</span>
+          <span class="admin-nav-item-text">Store schedule</span>
+          <span class="admin-nav-item-code">UC-A04</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Reports</div>
+        <a href="stats.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📊</span>
+          <span class="admin-nav-item-text">Workforce statistics</span>
+          <span class="admin-nav-item-code">UC-A09</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Inventory</div>
+        <a href="inventory.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📦</span>
+          <span class="admin-nav-item-text">Stock & restock</span>
+          <span class="admin-nav-item-code">UC-A10</span>
+        </a>
+
+        <div class="admin-sidebar-divider"></div>
+
+        <a href="login.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">🚪</span>
+          <span class="admin-nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-user">
+        <div class="admin-sidebar-user-name">Henriette · #1001</div>
+        <div class="admin-sidebar-user-role">Role: HR Employee (+ Management read-only)</div>
+        <div class="admin-sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-top-header">
+        <div class="admin-header-breadcrumb">
+          <span class="admin-breadcrumb-item">Administration</span>
+          <span class="admin-breadcrumb-separator">/</span>
+          <a href="employees.html" class="admin-breadcrumb-item">Employee overview</a>
+          <span class="admin-breadcrumb-separator">/</span>
+          <span class="admin-breadcrumb-item current">Edit: Li Wei #1042</span>
+        </div>
+        <div class="admin-header-right">
+          <div class="admin-header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="admin-header-notifications">
+            <span>🔔</span>
+            <span class="admin-notification-dot"></span>
+          </div>
+          <div class="admin-header-user">
+            <div class="admin-user-avatar">LW</div>
+            <span class="admin-user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-page-content">
+        <div class="admin-page-header">
+          <h1 class="admin-page-title">Edit employee — Li Wei #1042</h1>
+          <p class="admin-page-subtitle">Update employee information, status and employment details</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs" style="margin-bottom: 20px;">
+          <div class="tab-item active">Personal info</div>
+          <div class="tab-item">Employment</div>
+          <div class="tab-item">Salary & bank</div>
+          <div class="tab-item">Shift history</div>
+        </div>
+
+        <div class="admin-content-grid two-col">
+          <div>
+            <!-- Personal Info -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Personal information</div>
+                  <div class="profile-card-subtitle">Basic employee details and contact information</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Full name <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="Li Wei">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Employee ID</label>
+                    <input type="text" class="form-control" value="#1042" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Gender</label>
+                    <select class="form-control">
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Date of birth</label>
+                    <input type="date" class="form-control" value="1995-06-15">
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Home address <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="Xueyuan Road 5, Zhengzhou, Henan Province">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone <span class="required">*</span></label>
+                    <input type="tel" class="form-control" value="+86 137 **** 9012">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Store e-mail <span class="required">*</span></label>
+                    <input type="email" class="form-control" value="li.wei@meiti-sc.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">ID number</label>
+                    <input type="text" class="form-control" value="4101**********1234">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Employment -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Employment details</div>
+                  <div class="profile-card-subtitle">Role, status and contract information</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Role <span class="required">*</span></label>
+                    <select class="form-control">
+                      <option selected>Sales Associate</option>
+                      <option>Warehouse Employee</option>
+                      <option>Workflow Manager</option>
+                      <option>HR Officer</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Status <span class="required">*</span></label>
+                    <select class="form-control">
+                      <option selected>Active</option>
+                      <option>Probation</option>
+                      <option>On leave</option>
+                      <option>Part-time</option>
+                      <option>Suspended</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Start date <span class="required">*</span></label>
+                    <input type="date" class="form-control" value="2024-03-15">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Probation end</label>
+                    <input type="date" class="form-control" value="2024-06-15">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Contract hours / week</label>
+                    <input type="text" class="form-control" value="38">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Contract type</label>
+                    <select class="form-control">
+                      <option>Full-time permanent</option>
+                      <option>Part-time</option>
+                      <option>Fixed-term</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Department</label>
+                    <input type="text" class="form-control" value="Sales Floor" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Reports to</label>
+                    <input type="text" class="form-control" value="Zhou Qi (Workflow Manager)">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Salary & Bank -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Salary & bank details</div>
+                  <div class="profile-card-subtitle">Confidential — visible to HR and Management only</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Hourly wage (CNY) <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="26.00">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Last salary review</label>
+                    <input type="date" class="form-control" value="2026-01-10">
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Bank name</label>
+                    <input type="text" class="form-control" value="China Merchants Bank">
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Account holder</label>
+                    <input type="text" class="form-control" value="Li Wei">
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Bank account number</label>
+                    <input type="text" class="form-control" value="6225 **** **** 5678">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+              <button class="btn btn-primary" onclick="alert('Changes saved!')">Save changes</button>
+              <button class="btn btn-secondary" onclick="location.href='employees.html'">Cancel</button>
+              <button class="btn btn-outline-danger ml-auto" onclick="confirmDelete()">Remove employee</button>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="admin-side-panel">
+            <!-- Employee Summary -->
+            <div class="admin-info-card">
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #B0B7BF 0%, #8A94A3 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 600; flex-shrink: 0;">LW</div>
+                <div>
+                  <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">Li Wei</div>
+                  <div style="font-size: 12px; color: var(--text-tertiary);">#1042</div>
+                  <div style="margin-top: 4px;"><span class="badge badge-success">Active</span></div>
+                </div>
+              </div>
+              <div class="info-list">
+                <li>
+                  <span class="label">Role</span>
+                  <span class="value">Sales Associate</span>
+                </li>
+                <li>
+                  <span class="label">Store</span>
+                  <span class="value">Zhengzhou flagship</span>
+                </li>
+                <li>
+                  <span class="label">Hire date</span>
+                  <span class="value">15 Mar 2024</span>
+                </li>
+                <li>
+                  <span class="label">Tenure</span>
+                  <span class="value">2 years 7 mo</span>
+                </li>
+                <li>
+                  <span class="label">Contract</span>
+                  <span class="value">38 h / week</span>
+                </li>
+              </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="admin-info-card">
+              <div class="admin-info-card-title">This month</div>
+              <div class="info-list">
+                <li>
+                  <span class="label">Shifts scheduled</span>
+                  <span class="value">10</span>
+                </li>
+                <li>
+                  <span class="label">Hours planned</span>
+                  <span class="value">64 h</span>
+                </li>
+                <li>
+                  <span class="label">Absences</span>
+                  <span class="value">1 day</span>
+                </li>
+                <li>
+                  <span class="label">Monthly cost</span>
+                  <span class="value">¥1,664</span>
+                </li>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="admin-info-card">
+              <div class="admin-info-card-title">Quick actions</div>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn btn-secondary">View shift schedule</button>
+                <button class="btn btn-secondary">Send password reset</button>
+                <button class="btn btn-secondary">Export record (PDF)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Remove employee</h3>
+        <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px;">
+          Are you sure you want to remove <strong>Li Wei</strong> (#1042) from the system?
+        </p>
+        <div class="alert alert-warning" style="margin-bottom: 16px;">
+          <strong>Warning:</strong> This will mark the employee as departed. Historical data will be preserved.
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Reason for removal</label>
+          <select class="form-control">
+            <option>Resigned</option>
+            <option>Terminated</option>
+            <option>Retired</option>
+            <option>End of contract</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn btn-danger" onclick="alert('Employee removed.')">Confirm removal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmDelete() {
+      document.getElementById('deleteModal').classList.add('active');
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').classList.remove('active');
+    }
+
+    document.getElementById('deleteModal').addEventListener('click', function(e) {
+      if (e.target === this) closeDeleteModal();
+    });
+  </script>
+  <script src="../shared/js/auth.js"></script>
+  <script>
+    requireAuth('employee-edit.html');
+  </script>
+</body>
+</html>

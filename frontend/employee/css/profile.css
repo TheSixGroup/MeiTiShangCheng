@@ -1,0 +1,334 @@
+/* ============================================
+   Employee Portal - Profile & Absence
+   ============================================ */
+
+.profile-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.profile-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-card-title {
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.profile-card-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.profile-card-body {
+  padding: 20px;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: linear-gradient(135deg, #F8FAFD 0%, #F0F4F8 100%);
+}
+
+.profile-avatar-lg {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #B0B7BF 0%, #8A94A3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.profile-id {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.profile-role {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 20px;
+}
+
+.form-grid .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Read-only field display */
+.field-display {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.field-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.field-value {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.field-value.muted {
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+}
+
+/* Absence Form */
+.absence-type-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.absence-type-card {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--bg-card);
+}
+
+.absence-type-card:hover {
+  border-color: var(--text-tertiary);
+  background-color: var(--bg-hover);
+}
+
+.absence-type-card.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.absence-type-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.absence-type-name {
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.absence-type-desc {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.absence-balance {
+  font-size: 11px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-color-light);
+  color: var(--text-secondary);
+}
+
+.absence-balance strong {
+  color: var(--text-primary);
+}
+
+/* Absence History */
+.absence-history {
+  list-style: none;
+}
+
+.absence-history-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.absence-history-item:last-child {
+  border-bottom: none;
+}
+
+.absence-date-badge {
+  flex-shrink: 0;
+  width: 50px;
+  text-align: center;
+  padding: 8px 6px;
+  background-color: var(--bg-disabled);
+  border-radius: var(--border-radius);
+}
+
+.absence-date-day {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.absence-date-month {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.absence-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.absence-item-title {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.absence-item-detail {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+.absence-item-status {
+  flex-shrink: 0;
+}
+
+/* Side panel info card */
+.leave-balance-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.leave-balance-number {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.leave-balance-label {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+}
+
+.leave-balance-breakdown {
+  text-align: left;
+  font-size: 12px;
+}
+
+.leave-balance-breakdown div {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.leave-balance-breakdown div:last-child {
+  border-bottom: none;
+}
+
+.leave-balance-breakdown .lbl {
+  color: var(--text-tertiary);
+}
+
+.leave-balance-breakdown .val {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* Validation checklist */
+.validation-list {
+  list-style: none;
+}
+
+.validation-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.validation-list li .icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+.validation-list li.success .icon {
+  color: var(--status-success);
+}
+
+.validation-list li.error .icon {
+  color: var(--status-danger);
+}
+
+.validation-list li.success {
+  color: var(--text-secondary);
+}
+
+.validation-list li.error {
+  color: var(--status-danger);
+  font-weight: var(--font-weight-medium);
+}

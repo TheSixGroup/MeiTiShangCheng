@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Employee - Meitǐ Shāngchéng Admin</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="../employee/css/profile.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-brand">
+        <div class="admin-sidebar-logo">美</div>
+        <div class="admin-sidebar-brand-text">
+          <div class="admin-sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="admin-sidebar-brand-sub">Administration & Operations Portal</div>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-sub-label">Employees</div>
+        <a href="employees.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">👥</span>
+          <span class="admin-nav-item-text">Employee overview</span>
+          <span class="admin-nav-item-code">UC-A02</span>
+        </a>
+        <a href="employee-edit.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📋</span>
+          <span class="admin-nav-item-text">Manage records</span>
+          <span class="admin-nav-item-code">UC-A01</span>
+        </a>
+        <a href="employee-add.html" class="admin-nav-item active">
+          <span class="admin-nav-item-icon">➕</span>
+          <span class="admin-nav-item-text">Add employee</span>
+          <span class="admin-nav-item-code">UC-A01a</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Scheduling</div>
+        <a href="shift-planner.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📅</span>
+          <span class="admin-nav-item-text">Shift planner</span>
+          <span class="admin-nav-item-code">UC-A03</span>
+        </a>
+        <a href="store-schedule.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">🏪</span>
+          <span class="admin-nav-item-text">Store schedule</span>
+          <span class="admin-nav-item-code">UC-A04</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Reports</div>
+        <a href="stats.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📊</span>
+          <span class="admin-nav-item-text">Workforce statistics</span>
+          <span class="admin-nav-item-code">UC-A09</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Inventory</div>
+        <a href="inventory.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📦</span>
+          <span class="admin-nav-item-text">Stock & restock</span>
+          <span class="admin-nav-item-code">UC-A10</span>
+        </a>
+
+        <div class="admin-sidebar-divider"></div>
+
+        <a href="login.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">🚪</span>
+          <span class="admin-nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-user">
+        <div class="admin-sidebar-user-name">Henriette · #1001</div>
+        <div class="admin-sidebar-user-role">Role: HR Employee (+ Management read-only)</div>
+        <div class="admin-sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-top-header">
+        <div class="admin-header-breadcrumb">
+          <span class="admin-breadcrumb-item">Administration</span>
+          <span class="admin-breadcrumb-separator">/</span>
+          <span class="admin-breadcrumb-item current">Add a new employee</span>
+        </div>
+        <div class="admin-header-right">
+          <div class="admin-header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="admin-header-notifications">
+            <span>🔔</span>
+            <span class="admin-notification-dot"></span>
+          </div>
+          <div class="admin-header-user">
+            <div class="admin-user-avatar">LW</div>
+            <span class="admin-user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-page-content">
+        <div class="admin-page-header">
+          <h1 class="admin-page-title">Add a new employee</h1>
+          <p class="admin-page-subtitle">One form creates the employee record and the Website 1 account together</p>
+        </div>
+
+        <div class="admin-content-grid two-col">
+          <div>
+            <!-- Employee Form -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">New employee</div>
+                  <div class="profile-card-subtitle">
+                    <span style="color: #B8860B; font-weight: 500;">ⓘ * = required ⓘ the portal account is created here, never by the employee</span>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Full name <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="He Jing">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Employee ID (next free)</label>
+                    <input type="text" class="form-control" value="1051" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Start date <span class="required">*</span></label>
+                    <input type="date" class="form-control" value="2026-10-19">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Role <span class="required">*</span></label>
+                    <select class="form-control">
+                      <option>Sales Associate (Employee)</option>
+                      <option>Warehouse Employee</option>
+                      <option>HR Officer</option>
+                      <option>Workflow Manager</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-control">
+                      <option>Probation</option>
+                      <option selected>Active</option>
+                      <option>Part-time</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Contract hours / week <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="38">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Hourly wage (CNY) <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="25.00">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Home address <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="Xueyuan Road 5, Zhengzhou">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone <span class="required">*</span></label>
+                    <input type="tel" class="form-control" value="+86 137 **** 9012">
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Store e-mail <span class="required">*</span></label>
+                    <input type="email" class="form-control" value="he.jing@meiti-sc.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Department</label>
+                    <input type="text" class="form-control" value="— future version" disabled>
+                  </div>
+                </div>
+
+                <!-- Bank Details Section -->
+                <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color-light);">
+                  <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">
+                    Bank details
+                  </h4>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label class="form-label">Account holder <span class="required">*</span></label>
+                      <input type="text" class="form-control" value="He Jing">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Bank name <span class="required">*</span></label>
+                      <input type="text" class="form-control" value="China Merchants Bank">
+                    </div>
+                    <div class="form-group full-width">
+                      <label class="form-label">Bank card number <span class="required">*</span></label>
+                      <input type="text" class="form-control" value="6225 8888 1234 5678">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Options -->
+                <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color-light);">
+                  <div class="form-group">
+                    <label class="form-check">
+                      <input type="checkbox" class="form-check-input" checked>
+                      <span class="form-check-label">
+                        <strong>Create the employee-portal account (Website 1)</strong> and send a welcome e-mail with a first-time password
+                      </span>
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-check">
+                      <input type="checkbox" class="form-check-input" checked>
+                      <span class="form-check-label">
+                        The employee may be assigned to shifts from the start date onwards
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div style="display: flex; gap: 10px; margin-top: 24px;">
+                  <button class="btn btn-primary" onclick="alert('Employee saved successfully!')">Save employee</button>
+                  <button class="btn btn-secondary">Save and add another</button>
+                  <button class="btn btn-secondary" onclick="location.href='employees.html'">Cancel</button>
+                </div>
+
+                <p style="font-size: 11px; color: var(--text-tertiary); margin-top: 16px; line-height: 1.6;">
+                  Pre-condition: the signed-in account has the HR role. Post-condition: the employee exists, can sign in to Website 1, and appears in the shift planner for weeks after the start date.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="admin-side-panel">
+            <!-- Validation Checklist -->
+            <div class="admin-info-card">
+              <div class="admin-info-card-title">Validation checklist</div>
+              <ul class="validation-list">
+                <li class="success">
+                  <span class="icon">✓</span>
+                  Name filled
+                </li>
+                <li class="success">
+                  <span class="icon">✓</span>
+                  Role selected
+                </li>
+                <li class="success">
+                  <span class="icon">✓</span>
+                  Wage inside 18–60 CNY
+                </li>
+                <li class="error">
+                  <span class="icon">✕</span>
+                  E-mail already used by account 1031
+                </li>
+                <li class="error">
+                  <span class="icon">✕</span>
+                  Start date is before the store opening day
+                </li>
+                <li class="success">
+                  <span class="icon">✓</span>
+                  Bank details complete
+                </li>
+              </ul>
+              <p style="font-size: 11px; color: var(--text-tertiary); margin-top: 12px; line-height: 1.5;">
+                Nothing is stored while a rule fails (extension 4a): the form shows the failing field and returns to step 2.
+              </p>
+            </div>
+
+            <!-- Preview -->
+            <div class="admin-info-card">
+              <div class="admin-info-card-title">Preview for this employee</div>
+              <div style="background: repeating-linear-gradient(45deg, #F0F2F5, #F0F2F5 10px, #E8EAED 10px, #E8EAED 20px); border-radius: var(--border-radius); padding: 30px 20px; text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.6;">
+                Website 1 after first login<br>
+                <em>"My shift schedule — no shifts yet"</em>
+              </div>
+            </div>
+
+            <!-- Welcome Email Preview -->
+            <div class="admin-info-card">
+              <div class="admin-info-card-title">Welcome e-mail (sent by the system)</div>
+              <div style="background-color: #F8FAFD; border: 1px solid #DCE8F4; border-radius: var(--border-radius); padding: 14px; font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                <div style="margin-bottom: 8px;"><strong>To:</strong> he.jing@meiti-sc.com</div>
+                <div style="margin-bottom: 8px;"><strong>Subject:</strong> Your account for the Meitǐ Shāngchéng employee portal</div>
+                <div style="border-top: 1px solid #DCE8F4; padding-top: 10px; margin-top: 10px;">
+                  Your employee ID is 1051. Sign in with the temporary password and change it on first login. You will see your shifts as soon as week 43 is published.
+                </div>
+              </div>
+              <p style="font-size: 11px; color: var(--text-tertiary); margin-top: 10px; font-style: italic; line-height: 1.5;">
+                Sending this e-mail is part of the included behaviour "create portal account"; it is not a separate use case.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../shared/js/auth.js"></script>
+  <script>
+    requireAuth('employee-add.html');
+  </script>
+</body>
+</html>
