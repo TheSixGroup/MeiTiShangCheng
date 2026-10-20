@@ -1,67 +1,74 @@
 // Role-based access control for admin portal
-// Roles: hr, shift_manager, warehouse
+// Roles: hr_officer, shift_manager, warehouse_worker, manager
 
 const ROLES = {
-  HR: 'hr',
+  HR: 'hr_officer',
   SHIFT_MANAGER: 'shift_manager',
-  WAREHOUSE: 'warehouse'
+  WAREHOUSE: 'warehouse_worker',
+  MANAGER: 'manager'
 };
 
 // Page access permissions: which roles can access which page
 const PAGE_PERMISSIONS = {
-  'dashboard.html': ['hr', 'shift_manager', 'warehouse'],
-  'employees.html': ['hr', 'shift_manager'],
-  'employee-add.html': ['hr'],
-  'employee-edit.html': ['hr'],
-  'shift-planner.html': ['hr', 'shift_manager'],
-  'store-schedule.html': ['hr', 'shift_manager'],
-  'stats.html': ['hr', 'shift_manager'],
-  'inventory.html': ['hr', 'shift_manager', 'warehouse']
+  'employees.html': ['hr_officer', 'shift_manager', 'manager'],
+  'employee-add.html': ['hr_officer', 'manager'],
+  'employee-edit.html': ['hr_officer', 'manager'],
+  'shift-planner.html': ['hr_officer', 'shift_manager', 'manager'],
+  'store-schedule.html': ['hr_officer', 'shift_manager', 'manager'],
+  'stats.html': ['hr_officer', 'shift_manager', 'manager'],
+  'inventory.html': ['hr_officer', 'shift_manager', 'warehouse_worker', 'manager']
 };
 
 // Sidebar menu visibility per role (keyed by page filename)
 const MENU_PAGE_MAP = {
-  'employees.html': ['hr', 'shift_manager'],
-  'employee-edit.html': ['hr'],
-  'employee-add.html': ['hr'],
-  'shift-planner.html': ['hr', 'shift_manager'],
-  'store-schedule.html': ['hr', 'shift_manager'],
-  'stats.html': ['hr', 'shift_manager'],
-  'inventory.html': ['hr', 'shift_manager', 'warehouse']
+  'employees.html': ['hr_officer', 'shift_manager', 'manager'],
+  'employee-edit.html': ['hr_officer', 'manager'],
+  'employee-add.html': ['hr_officer', 'manager'],
+  'shift-planner.html': ['hr_officer', 'shift_manager', 'manager'],
+  'store-schedule.html': ['hr_officer', 'shift_manager', 'manager'],
+  'stats.html': ['hr_officer', 'shift_manager', 'manager'],
+  'inventory.html': ['hr_officer', 'shift_manager', 'warehouse_worker', 'manager']
 };
 
 // Feature-level permissions
 const FEATURE_PERMISSIONS = {
   // Employee management features
-  'employee.edit': ['hr'],
-  'employee.delete': ['hr'],
-  'employee.add': ['hr'],
-  'employee.view.salary': ['hr'],
-  'employee.export': ['hr'],
+  'employee.edit': ['hr_officer', 'manager'],
+  'employee.delete': ['hr_officer', 'manager'],
+  'employee.add': ['hr_officer', 'manager'],
+  'employee.view.salary': ['hr_officer', 'manager'],
+  'employee.export': ['hr_officer', 'manager'],
 
   // Shift planner features
-  'shift.assign': ['shift_manager'],
-  'shift.edit': ['shift_manager'],
-  'shift.publish': ['shift_manager'],
+  'shift.assign': ['shift_manager', 'manager'],
+  'shift.edit': ['shift_manager', 'manager'],
+  'shift.publish': ['shift_manager', 'manager'],
 
   // Inventory features
-  'inventory.process': ['warehouse'],
-  'inventory.complete': ['warehouse'],
-  'inventory.edit': ['warehouse'],
-  'inventory.reorder': ['warehouse', 'shift_manager']
+  'inventory.process': ['warehouse_worker', 'manager'],
+  'inventory.complete': ['warehouse_worker', 'manager'],
+  'inventory.edit': ['warehouse_worker', 'manager'],
+  'inventory.reorder': ['shift_manager', 'manager', 'hr_officer']
 };
 
 // Auth helpers
 function getCurrentRole() {
+  const user = getCurrentUser();
+  if (user && user.roles && user.roles.length > 0) {
+    return user.roles[0];
+  }
   return localStorage.getItem('adminRole') || null;
 }
 
 function getCurrentUsername() {
+  const user = getCurrentUser();
+  if (user && user.realName) return user.realName;
+  if (user && user.username) return user.username;
   return localStorage.getItem('adminUsername') || null;
 }
 
 function isLoggedIn() {
-  return getCurrentRole() !== null;
+  return getToken() !== null && getCurrentUser() !== null;
 }
 
 function login(username, role) {
@@ -70,9 +77,18 @@ function login(username, role) {
 }
 
 function logout() {
+  clearToken();
+  clearCurrentUser();
   localStorage.removeItem('adminUsername');
   localStorage.removeItem('adminRole');
-  window.location.href = 'login.html';
+  
+  // Determine if we're on admin or employee side
+  const path = window.location.pathname;
+  if (path.includes('/admin/')) {
+    window.location.href = 'login.html';
+  } else {
+    window.location.href = 'login.html';
+  }
 }
 
 // Check if current user has access to a page
@@ -160,9 +176,11 @@ function applySidebarPermissions() {
 
 function getRoleLabel(role) {
   const labels = {
-    'hr': 'HR Officer',
+    'hr_officer': 'HR Officer',
     'shift_manager': 'Workflow Manager',
-    'warehouse': 'Warehouse Worker'
+    'warehouse_worker': 'Warehouse Worker',
+    'manager': 'Store Manager',
+    'employee': 'Employee'
   };
   return labels[role] || role;
 }

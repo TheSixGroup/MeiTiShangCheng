@@ -43,24 +43,15 @@
           <p class="login-form-subtitle">Website 2 · management portal</p>
         </div>
 
-        <form class="login-form" onsubmit="handleLogin(event)">
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
           <div class="form-group">
-            <label class="form-label" for="role">Role</label>
-            <select class="form-control" id="role">
-              <option value="hr">HR Officer</option>
-              <option value="shift_manager">Workflow Manager</option>
-              <option value="warehouse">Warehouse Worker</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="email">E-mail or employee ID</label>
-            <input type="text" class="form-control" id="email" value="henriette@meiti-sc.com" placeholder="Enter your email or ID">
+            <label class="form-label" for="username">Username</label>
+            <input type="text" class="form-control" id="username" value="hr01" placeholder="Enter your username">
           </div>
 
           <div class="form-group">
             <label class="form-label" for="password">Password</label>
-            <input type="password" class="form-control" id="password" value="**********" placeholder="Enter your password">
+            <input type="password" class="form-control" id="password" value="123456" placeholder="Enter your password">
           </div>
 
           <div class="login-form-remember">
@@ -70,37 +61,67 @@
             </label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-login" onclick="handleLogin(event)">Sign in</button>
+          <div id="loginError" style="color: #e74c3c; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+
+          <button type="submit" class="btn btn-primary btn-login" id="loginBtn">Sign in</button>
         </form>
 
+  <script src="../shared/js/api.js"></script>
   <script src="../shared/js/auth.js"></script>
   <script>
-    function handleLogin(e) {
-      e.preventDefault();
-      const role = document.getElementById('role').value;
-      const email = document.getElementById('email').value;
-      const username = email.split('@')[0] || 'Admin';
-      
-      login(username, role);
-      
-      // Redirect to first allowed page for this role
+    // If already logged in, redirect to dashboard
+    if (isLoggedIn()) {
+      const role = getCurrentRole();
       const redirectMap = {
-        'hr': 'employees.html',
+        'hr_officer': 'employees.html',
         'shift_manager': 'shift-planner.html',
-        'warehouse': 'inventory.html'
+        'warehouse_worker': 'inventory.html',
+        'manager': 'employees.html'
       };
       window.location.href = redirectMap[role] || 'employees.html';
     }
 
-    // If already logged in, redirect
-    if (isLoggedIn()) {
-      const role = getCurrentRole();
-      const redirectMap = {
-        'hr': 'employees.html',
-        'shift_manager': 'shift-planner.html',
-        'warehouse': 'inventory.html'
-      };
-      window.location.href = redirectMap[role] || 'employees.html';
+    async function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('loginError');
+      const loginBtn = document.getElementById('loginBtn');
+
+      if (!username || !password) {
+        errorEl.textContent = '请输入用户名和密码';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Signing in...';
+
+      const result = await api.login(username, password);
+
+      if (result.code === 0 && result.data) {
+        // Save token and user info
+        setToken(result.data.token);
+        setCurrentUser(result.data.userInfo);
+        
+        const role = result.data.userInfo.roles[0];
+        login(username, role);
+
+        // Redirect based on role
+        const redirectMap = {
+          'hr_officer': 'employees.html',
+          'shift_manager': 'shift-planner.html',
+          'warehouse_worker': 'inventory.html',
+          'manager': 'employees.html'
+        };
+        window.location.href = redirectMap[role] || 'employees.html';
+      } else {
+        errorEl.textContent = result.message || '登录失败，请检查用户名和密码';
+        errorEl.style.display = 'block';
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Sign in';
+      }
     }
   </script>
 
@@ -109,21 +130,12 @@
         </p>
 
         <div class="login-alt-action">
-          <button class="btn btn-secondary" onclick="window.location.href='../employee/login.html'">
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='../employee/login.html'">
             ← Sign in as Employee (Website 1)
           </button>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    function handleLogin(e) {
-      e.preventDefault();
-      const role = document.getElementById('role').value;
-      // Redirect based on role
-      window.location.href = 'employees.html';
-    }
-  </script>
 </body>
 </html>
