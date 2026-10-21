@@ -19,7 +19,7 @@ BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 from flask_restx import Api
 
 from config import Config
@@ -67,6 +67,16 @@ def create_app() -> Flask:
     @app.route("/api/v1/health")
     def health():
         return {"code": 0, "message": "success", "data": {"status": "ok"}}
+
+    # ---------- CORS（前后端分离：允许本机与局域网内其他电脑访问） ----------
+    @app.after_request
+    def add_cors_headers(response):
+        origin = request.headers.get("Origin", "")
+        if origin:
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+            response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+        return response
 
     # ---------- 建表（首次运行自动创建） ----------
     with app.app_context():

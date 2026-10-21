@@ -1,7 +1,9 @@
 // API Client for Meiti Shangcheng
-// Connects to Flask backend at http://localhost:5000/api/v1
+// Connects to Flask backend on the same host that serves this page.
+// Works with localhost AND LAN IPs (e.g. http://192.168.x.x:8080), so other
+// computers on the same network can use the system too.
 
-const API_BASE_URL = 'http://localhost:5000/api/v1';
+const API_BASE_URL = `http://${window.location.hostname}:5000/api/v1`;
 
 // Get JWT token from localStorage
 function getToken() {

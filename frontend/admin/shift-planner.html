@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../shared/css/variables.css">
   <link rel="stylesheet" href="../shared/css/components.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/planner.css">
+  <link rel="stylesheet" href="css/planner.css?v=2">
 </head>
 <body>
   <div class="admin-layout">
@@ -830,7 +830,28 @@
     </div>
   </div>
 
+  <!-- Shift Detail Modal (wireframe style) -->
+  <div class="modal-overlay" id="shiftDetailModal">
+    <div class="modal" style="max-width: 660px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="sd-shift-pill morning" id="sdShiftPill">Monday morning</span>
+          <span class="sd-count" id="sdCount">0</span>
+        </div>
+        <button class="modal-close" onclick="closeShiftDetail()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="sd-list" id="sdList"></div>
+        <div class="sd-assign-row">
+          <button class="sd-assign-btn" id="sdAssignBtn" onclick="sdOpenAssign()">assign……</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    let assignTarget = null; // the planner shift block currently being assigned to
+
     function openAssignModal(shiftType, day, time) {
       const modal = document.getElementById('assignModal');
       const badge = document.getElementById('assignShiftBadge');
@@ -842,6 +863,16 @@
       badge.textContent = shiftType.charAt(0).toUpperCase() + shiftType.slice(1);
       dayEl.textContent = day;
       timeEl.textContent = time;
+
+      // Locate the matching planner block (Mon 12 Oct vs Monday, 12 October)
+      assignTarget = null;
+      document.querySelectorAll('.planner-shift-block').forEach(block => {
+        if (!block.classList.contains(shiftType)) return;
+        const dn = block.closest('.planner-day').querySelector('.planner-day-name').textContent.trim();
+        if (dn.slice(0, 3).toLowerCase() === String(day).slice(0, 3).toLowerCase()) {
+          assignTarget = block;
+        }
+      });
 
       modal.classList.add('active');
     }
@@ -855,19 +886,132 @@
       btn.classList.add('assigned');
       btn.disabled = true;
       btn.onclick = null;
+
+      // Add the employee as a chip in the planner block
+      if (assignTarget) {
+        const exists = Array.from(assignTarget.querySelectorAll('.employee-chip span:nth-child(2)'))
+          .some(s => s.textContent.trim() === name);
+        if (!exists) {
+          const avatarEl = btn.closest('tr').querySelector('.avatar-sm');
+          const initials = avatarEl ? avatarEl.textContent.trim() : name.slice(0, 2).toUpperCase();
+          const roleText = btn.closest('tr').querySelector('td:nth-child(2)').textContent.trim();
+          const roleMap = { 'Sales Associate': 'S', 'Warehouse Employee': 'W', 'Cashier': 'C', 'Store Manager': 'M', 'HR Officer': 'H' };
+          const chip = document.createElement('div');
+          chip.className = 'employee-chip';
+          chip.innerHTML =
+            '<span class="employee-chip-avatar">' + initials.trim() + '</span>' +
+            '<span>' + name + '</span>' +
+            '<span class="employee-chip-role">' + (roleMap[roleText] || 'S') + '</span>';
+          assignTarget.querySelector('.employee-chips').appendChild(chip);
+          updateDayCount(assignTarget);
+        }
+      }
     }
+
+    function updateDayCount(block) {
+      const day = block.closest('.planner-day');
+      const total = day.querySelectorAll('.employee-chip').length;
+      day.querySelector('.planner-day-count').textContent = total + ' p';
+    }
+
+    // ===== Shift detail modal (click Morning / Afternoon / Evening) =====
+    let sdCurrent = null;
+
+    function openShiftDetail(titleEl) {
+      const block = titleEl.closest('.planner-shift-block');
+      const dayEl = block.closest('.planner-day').querySelector('.planner-day-name');
+      const shiftType = ['morning', 'afternoon', 'evening'].find(t => block.classList.contains(t)) || 'morning';
+      sdCurrent = { block: block, shiftType: shiftType, dayText: dayEl.textContent.trim() };
+      renderShiftDetail();
+      document.getElementById('shiftDetailModal').classList.add('active');
+    }
+
+    function closeShiftDetail() {
+      document.getElementById('shiftDetailModal').classList.remove('active');
+    }
+
+    function renderShiftDetail() {
+      const pill = document.getElementById('sdShiftPill');
+      const count = document.getElementById('sdCount');
+      const list = document.getElementById('sdList');
+      const assignBtn = document.getElementById('sdAssignBtn');
+      const canAssign = typeof can === 'function' && can('shift.assign');
+
+      pill.className = 'sd-shift-pill ' + sdCurrent.shiftType;
+      pill.textContent = sdCurrent.dayText + ' ' + sdCurrent.shiftType;
+      assignBtn.disabled = !canAssign;
+
+      const chips = sdCurrent.block.querySelectorAll('.employee-chip');
+      count.textContent = chips.length;
+
+      if (chips.length === 0) {
+        list.innerHTML = '<div class="sd-empty">No employees assigned to this shift yet.</div>';
+        return;
+      }
+
+      const roleMap = { S: 'Sales', C: 'Cashier', W: 'Warehouse', M: 'Manager', Z: 'Sales', L: 'Sales', H: 'HR' };
+      list.innerHTML = '';
+      chips.forEach(chip => {
+        const spans = chip.querySelectorAll('span');
+        const name = spans[1].textContent.trim();
+        const initials = chip.querySelector('.employee-chip-avatar').textContent.trim();
+        const roleLetter = chip.querySelector('.employee-chip-role') ? chip.querySelector('.employee-chip-role').textContent.trim() : '';
+        const row = document.createElement('div');
+        row.className = 'sd-row';
+        row.innerHTML =
+          '<span class="sd-name">' + name + '</span>' +
+          '<span class="sd-role">' + (roleMap[roleLetter] || 'Staff') + '</span>' +
+          '<button class="sd-delete"' + (canAssign ? '' : ' disabled') + ' onclick="sdRemove(this)">delete</button>' +
+          '<span class="sd-avatar">' + initials + '</span>';
+        list.appendChild(row);
+      });
+    }
+
+    function sdRemove(btn) {
+      const name = btn.parentElement.querySelector('.sd-name').textContent.trim();
+      sdCurrent.block.querySelectorAll('.employee-chip').forEach(chip => {
+        if (chip.querySelectorAll('span')[1].textContent.trim() === name) chip.remove();
+      });
+      updateDayCount(sdCurrent.block);
+      renderShiftDetail();
+    }
+
+    function sdOpenAssign() {
+      const times = { morning: '08:00 – 16:00 (8 h)', afternoon: '12:00 – 20:00 (8 h)', evening: '16:00 – 24:00 (8 h)' };
+      const info = sdCurrent;
+      closeShiftDetail();
+      openAssignModal(info.shiftType, info.dayText, times[info.shiftType]);
+    }
+
+    // Make every shift title clickable + fix + assign buttons to pass their own day/shift
+    document.querySelectorAll('.planner-shift-block').forEach(block => {
+      const title = block.querySelector('.planner-shift-title');
+      if (title) title.addEventListener('click', function() { openShiftDetail(this); });
+
+      const btn = block.querySelector('.add-assign-btn');
+      if (btn) {
+        const shiftType = ['morning', 'afternoon', 'evening'].find(t => block.classList.contains(t));
+        const dayText = block.closest('.planner-day').querySelector('.planner-day-name').textContent.trim();
+        const times = { morning: '08:00 – 16:00 (8 h)', afternoon: '12:00 – 20:00 (8 h)', evening: '16:00 – 24:00 (8 h)' };
+        btn.onclick = function() { openAssignModal(shiftType, dayText, times[shiftType]); };
+      }
+    });
 
     // Close modal on overlay click
     document.getElementById('assignModal').addEventListener('click', function(e) {
       if (e.target === this) closeAssignModal();
     });
+    document.getElementById('shiftDetailModal').addEventListener('click', function(e) {
+      if (e.target === this) closeShiftDetail();
+    });
 
     // Close on Escape
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeAssignModal();
+      if (e.key === 'Escape') { closeAssignModal(); closeShiftDetail(); }
     });
   </script>
-  <script src="../shared/js/api.js"></script>`n  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/api.js"></script>
+  <script src="../shared/js/auth.js"></script>
   <script>
     // Auth check
     requireAuth('shift-planner.html');
