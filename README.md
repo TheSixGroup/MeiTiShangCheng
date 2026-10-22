@@ -1,6 +1,6 @@
 ﻿# 美体商城员工管理系统 —— 后端（Backend）
 
-第六组 · 软件工程规划课程项目
+第六组
 
 基于 **Flask + Flask-RESTX + SQLAlchemy + JWT** 实现，严格遵循《前后端接口契约文档 v1.0》。
 
