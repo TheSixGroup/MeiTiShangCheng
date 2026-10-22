@@ -18,7 +18,7 @@ MeiTiShangCheng/
 │   └── README.md             # 前端详细文档
 ├── docs/
 │   └── API.md                # 前后端 API 接口文档 v1.1
-├── backend/                  # 后端代码（Flask，待实现）
+├── backend/                  # 后端代码（Flask）
 ├── .gitignore
 └── README.md
 ```
