@@ -110,7 +110,7 @@ python -m http.server 8080
 - 员工端入口：`employee/login.html`
 - 管理端入口：`admin/login.html`
 
-### 后端运行（待实现）
+### 后端运行
 
 ```bash
 cd backend
@@ -148,4 +148,4 @@ python app.py
 
 ## 📄 
 
-课程项目。
+课程项目
