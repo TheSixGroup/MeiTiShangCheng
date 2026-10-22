@@ -68,8 +68,6 @@ MeiTiShangCheng/
 | 人力统计 | ✅ 可看 | ✅ 可看 | ❌ 不可见 |
 | 库存管理 | 👁️ 只读 | 👁️ 只读 | ✅ 完整权限 |
 
-更多前端说明详见 [frontend/README.md](frontend/README.md)
-
 ---
 
 ## 🔌 API 接口
