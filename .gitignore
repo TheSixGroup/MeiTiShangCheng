@@ -16,8 +16,10 @@ backend/data.db
 # ---------- 运行时产物 ----------
 backend/uploads/
 .tmp/
+_pip_tmp/
 pip-*/
 *.log
+_*.log
 
 # ---------- IDE / 系统 ----------
 .vscode/
