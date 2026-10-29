@@ -19,7 +19,7 @@ BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
-from flask import Flask, send_from_directory, request, make_response
+from flask import Flask, send_from_directory, request, make_response, redirect
 from flask_restx import Api
 
 from config import Config
@@ -75,9 +75,19 @@ def create_app() -> Flask:
         (p for p in _frontend_candidates if os.path.isdir(p)), _frontend_candidates[0]
     )
 
+    # 入口统一跳转到 /admin/login.html：
+    # 若直接把 login.html 的内容返回在 "/" 下，页面里的相对链接（employees.html 等）
+    # 会解析成 "/employees.html" 而 404，所以这里用 302 让浏览器把基准路径落到 /admin/。
     @app.route("/")
+    @app.route("/index.html")
+    @app.route("/login.html")
     def index():
-        return send_from_directory(FRONTEND_DIR, "admin/login.html")
+        return redirect("/admin/login.html")
+
+    @app.route("/favicon.ico")
+    def favicon():
+        # 浏览器自动请求，返回空响应避免 404 噪音
+        return "", 204
 
     @app.route("/<path:filename>")
     def frontend_static(filename):
