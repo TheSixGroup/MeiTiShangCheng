@@ -1,9 +1,15 @@
 // API Client for Meiti Shangcheng
-// Connects to Flask backend on the same host that serves this page.
-// Works with localhost AND LAN IPs (e.g. http://192.168.x.x:8080), so other
-// computers on the same network can use the system too.
+// 后端优先同源：后端已同时托管前端页面（app.py 的 FRONTEND_DIR），
+// 所以页面从 5000 端口或 HTTPS 隧道打开时，接口直接走同源，无需写死主机和端口。
+// 本地用静态服务器调试（如 Live Server 的 http://192.168.x.x:8080）时，
+// 自动回退到「同主机的 5000 端口」，保证前后端分离调试也能用。
 
-const API_BASE_URL = `http://${window.location.hostname}:5000/api/v1`;
+const _loc = window.location;
+const _servedByBackend = _loc.port === '5000' || _loc.protocol === 'https:';
+
+const API_BASE_URL = _servedByBackend
+  ? `${_loc.origin}/api/v1`
+  : `http://${_loc.hostname}:5000/api/v1`;
 
 // Get JWT token from localStorage
 function getToken() {
