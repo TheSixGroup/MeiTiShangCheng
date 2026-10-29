@@ -74,9 +74,14 @@ if errorlevel 1 (
     echo       unreachable, skipped.
     exit /b 1
 )
-echo       reachable, installing (may take 1-2 minutes) ...
-"%PY%" -m pip install -r requirements.txt --timeout 15 --retries 1 -q -i "%INDEX%"
-exit /b %errorlevel%
+echo       reachable, installing now ...
+echo       (progress is shown below; if nothing moves for 60s, press Ctrl+C)
+echo.
+"%PY%" -m pip install -r requirements.txt --timeout 20 --retries 1 --only-binary=:all: --progress-bar on -i "%INDEX%"
+set "RC=%ERRORLEVEL%"
+echo.
+if not "%RC%"=="0" echo       install failed with code %RC%, trying next route ...
+exit /b %RC%
 
 :ok
 echo.
