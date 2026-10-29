@@ -1,15 +1,19 @@
 // API Client for Meiti Shangcheng
-// 后端优先同源：后端已同时托管前端页面（app.py 的 FRONTEND_DIR），
-// 所以页面从 5000 端口或 HTTPS 隧道打开时，接口直接走同源，无需写死主机和端口。
-// 本地用静态服务器调试（如 Live Server 的 http://192.168.x.x:8080）时，
-// 自动回退到「同主机的 5000 端口」，保证前后端分离调试也能用。
+// 后端同源托管前端页面（app.py 的 FRONTEND_DIR），所以默认走同源接口：
+//   - 本地        http://localhost:5000/          -> /api/v1
+//   - 局域网      http://192.168.x.x:5000/        -> /api/v1
+//   - HTTPS 隧道  https://xxx.nyat.app/           -> /api/v1
+//   - TCP 隧道    http://xxx.nyat.app:12345/      -> /api/v1（任意端口都能用）
+// 只有页面来自常见的本地静态服务器端口（Live Server 等）时，才回退到「同主机 5000 端口」，
+// 方便前后端分开调试。
 
 const _loc = window.location;
-const _servedByBackend = _loc.port === '5000' || _loc.protocol === 'https:';
+const _DEV_SERVER_PORTS = ['3000', '4173', '5500', '5501', '5173', '8000', '8080', '8081'];
+const _isDevServer = _loc.protocol === 'file:' || _DEV_SERVER_PORTS.includes(_loc.port);
 
-const API_BASE_URL = _servedByBackend
-  ? `${_loc.origin}/api/v1`
-  : `http://${_loc.hostname}:5000/api/v1`;
+const API_BASE_URL = _isDevServer
+  ? `http://${_loc.hostname}:5000/api/v1`
+  : `${_loc.origin}/api/v1`;
 
 // Get JWT token from localStorage
 function getToken() {
