@@ -1,27 +1,30 @@
-# Python
+# ---------- Python ----------
 __pycache__/
 *.py[cod]
 *.egg-info/
+.pytest_cache/
 
-# 虚拟环境
+# ---------- 虚拟环境 ----------
 .venv/
 venv/
 
-# 数据库（本地开发）
+# ---------- 数据库（本地生成，不提交） ----------
 backend/data.db
 *.sqlite3
+*.db-journal
 
-# 上传文件
+# ---------- 运行时产物 ----------
 backend/uploads/
+.tmp/
+pip-*/
+*.log
 
-# IDE
+# ---------- IDE / 系统 ----------
 .vscode/
 .idea/
 *.swp
-
-# 系统
 .DS_Store
 Thumbs.db
 
-# 临时
-*.log
+# ---------- 临时 / 备份 ----------
+*.bak
