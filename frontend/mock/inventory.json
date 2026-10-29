@@ -1,0 +1,100 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "list": [
+      {
+        "id": 2001,
+        "sku": "PRD-001",
+        "name": "Media Player Pro",
+        "category": "Electronics",
+        "quantity": 45,
+        "minStock": 20,
+        "unit": "pcs",
+        "status": "in_stock",
+        "lastUpdated": "2026-10-15T10:30:00Z"
+      },
+      {
+        "id": 2002,
+        "sku": "PRD-002",
+        "name": "Wireless Earbuds X1",
+        "category": "Electronics",
+        "quantity": 12,
+        "minStock": 30,
+        "unit": "pcs",
+        "status": "low_stock",
+        "lastUpdated": "2026-10-14T14:20:00Z"
+      },
+      {
+        "id": 2003,
+        "sku": "PRD-003",
+        "name": "Smart Watch S2",
+        "category": "Electronics",
+        "quantity": 0,
+        "minStock": 10,
+        "unit": "pcs",
+        "status": "out_of_stock",
+        "lastUpdated": "2026-10-12T09:00:00Z"
+      },
+      {
+        "id": 2004,
+        "sku": "PRD-004",
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "quantity": 28,
+        "minStock": 15,
+        "unit": "pcs",
+        "status": "in_stock",
+        "lastUpdated": "2026-10-16T11:45:00Z"
+      },
+      {
+        "id": 2005,
+        "sku": "PRD-005",
+        "name": "USB-C Cable (1m)",
+        "category": "Accessories",
+        "quantity": 120,
+        "minStock": 50,
+        "unit": "pcs",
+        "status": "in_stock",
+        "lastUpdated": "2026-10-15T16:00:00Z"
+      },
+      {
+        "id": 2006,
+        "sku": "PRD-006",
+        "name": "Phone Case - Clear",
+        "category": "Accessories",
+        "quantity": 8,
+        "minStock": 20,
+        "unit": "pcs",
+        "status": "low_stock",
+        "lastUpdated": "2026-10-13T13:30:00Z"
+      },
+      {
+        "id": 2007,
+        "sku": "PRD-007",
+        "name": "Power Bank 10000mAh",
+        "category": "Electronics",
+        "quantity": 22,
+        "minStock": 15,
+        "unit": "pcs",
+        "status": "in_stock",
+        "lastUpdated": "2026-10-16T08:15:00Z"
+      },
+      {
+        "id": 2008,
+        "sku": "PRD-008",
+        "name": "Screen Protector",
+        "category": "Accessories",
+        "quantity": 56,
+        "minStock": 30,
+        "unit": "pcs",
+        "status": "in_stock",
+        "lastUpdated": "2026-10-14T10:00:00Z"
+      }
+    ],
+    "total": 15,
+    "page": 1,
+    "pageSize": 10,
+    "totalPages": 2
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Sign In - Meitǐ Shāngchéng</title>
+
+  <!-- 分层引入CSS文件 -->
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+
+<body>
+  <div class="login-wrapper"> 
+    <!-- 左右分屏 -->
+    <div class="login-brand">
+      <div class="login-brand-header">
+        <div class="brand-logo">美</div>
+        <h1 class="brand-title">Meitǐ Shāngchéng</h1>
+        <!--主标题 -->
+        <p class="brand-subtitle">Employee Shift Portal</p>
+        <!-- 子标题 -->
+        <p class="brand-description">
+          Website 1 is the portal where store employees look at the shifts that were assigned to them. 
+          It never changes a schedule — planning happens in Website 2.
+        </p>
+        <!-- 说明当前页面是可读的，页面修改在第二个网页 -->
+      </div>
+
+      <!-- 下半部分：功能列表 -->
+      <div class="login-brand-footer">
+        <ul class="brand-features">
+          <!-- 无序列表 -->
+          <li>My shifts, week and month view</li>
+          <li>My working hours per week</li>
+          <li>My personal data (read / update)</li>
+          <li>Report an absence (sick day)</li>
+
+          <li class="disabled">No shift editing, no other employee's data</li>
+          <!-- 重点：加上 disabled 类，表示不可用/禁止，展示权限边界 -->
+        </ul>
+        <p class="brand-footer-note">
+          <!-- 语言与品牌规范备注 -->
+          UI language: English only · colours follow the Meitǐ Shāngchéng / Jupiter brand identity
+        </p>
+      </div>
+
+    </div>
+    <!-- 右侧面板 - 登录表单区 -->
+    <div class="login-form-panel">
+      <div class="login-form-container">
+      <!-- 内层容器，用来限制表单的最大宽度，防止在大屏幕上拉得太长 -->
+
+        <!-- 表单标题区 -->
+        <div class="login-form-header">
+          <h2 class="login-form-title">Employee sign in</h2>
+          <p class="login-form-subtitle">Website 1 · view-only portal</p>
+        </div>
+
+        <!-- 登录表单错误提示区 -->
+        <div class="login-error-box" id="loginError">
+          <strong>Error state — extension 1a:</strong> the e-mail or password is not correct. Attempt 2 of 5; after 5 attempts the account is blocked and must be released by HR.
+        </div>
+
+        <!-- 核心表单区域 -->
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+        <!-- 绑定提交事件处理函数 -->
+
+          <!-- 邮箱输入组 -->
+          <div class="form-group">
+            <label class="form-label" for="email">Employee e-mail or employee ID</label>
+            <input type="text" class="form-control" id="email" value="li.wei@meiti-sc.com" placeholder="Enter your email or ID">
+            <!-- type="text" 允许输入邮箱或工号；value 预填了李伟的邮箱 -->
+          </div>
+          <!-- 密码输入组 -->
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" value="**********" placeholder="Enter your password">
+             <!-- type="password" 密文显示；这里 value 直接预填了 * 号（演示用） -->
+          </div>
+
+          <!-- 记住我选项 -->
+          <div class="login-form-remember">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <!-- 登录按钮 -->
+          <button type="submit" class="btn btn-primary btn-login">Sign in</button>
+        </form>
+
+         <!-- 忘记密码链接 -->
+        <p class="login-forgot">
+          Forgot password? <a href="#">Ask the administration (HR)</a>
+        </p>
+
+        <!-- 切换到管理员登录按钮 -->
+        <div class="login-alt-action">
+          <!-- 点击触发 JS 跳转，使用内联 onclick 跳转到 admin/login.html -->
+          <button class="btn btn-secondary" onclick="window.location.href='../admin/login.html'">
+            Sign in as Workflow Manager (→ Website 2)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //表单提交时触发的函数
+    function handleLogin(e) {
+      e.preventDefault(); // 阻止表单的默认提交行为（防止页面刷新）
+      window.location.href = 'shifts.html';
+      // 模拟登录成功，直接跳转到班次列表页
+    }
+  </script>
+</body>
+</html>

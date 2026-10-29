@@ -1,0 +1,34 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "id": 1,
+      "code": "sales_associate",
+      "name": "Sales Associate",
+      "defaultHourlyWage": 26.00,
+      "description": "店面销售员工"
+    },
+    {
+      "id": 2,
+      "code": "warehouse_employee",
+      "name": "Warehouse Employee",
+      "defaultHourlyWage": 28.00,
+      "description": "仓库员工"
+    },
+    {
+      "id": 3,
+      "code": "shift_manager",
+      "name": "Workflow Manager",
+      "defaultHourlyWage": 32.00,
+      "description": "排班经理"
+    },
+    {
+      "id": 4,
+      "code": "hr_officer",
+      "name": "HR Officer",
+      "defaultHourlyWage": 35.00,
+      "description": "人力资源专员"
+    }
+  ]
+}

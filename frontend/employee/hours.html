@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working Hours - Meitǐ Shāngchéng Employee Portal</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/hours.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">美</div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="sidebar-brand-sub">Employee Shift Portal</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="shifts.html" class="nav-item">
+          <span class="nav-item-icon">📅</span>
+          <span class="nav-item-text">My shift schedule</span>
+          <span class="nav-item-code">UC-E02</span>
+        </a>
+        <a href="calendar.html" class="nav-item">
+          <span class="nav-item-icon">📆</span>
+          <span class="nav-item-text">Monthly calendar</span>
+          <span class="nav-item-code">UC-E03</span>
+        </a>
+        <a href="hours.html" class="nav-item active">
+          <span class="nav-item-icon">⏱️</span>
+          <span class="nav-item-text">Working hours</span>
+          <span class="nav-item-code">UC-E04</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-item-icon">👤</span>
+          <span class="nav-item-text">Personal data</span>
+          <span class="nav-item-code">UC-E05</span>
+        </a>
+        <a href="absence.html" class="nav-item">
+          <span class="nav-item-icon">📝</span>
+          <span class="nav-item-text">Report absence</span>
+          <span class="nav-item-code">UC-E07</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="login.html" class="nav-item">
+          <span class="nav-item-icon">🚪</span>
+          <span class="nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-name">Li Wei · #1042</div>
+        <div class="sidebar-user-role">Role: Employee · view-only</div>
+        <div class="sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-breadcrumb">
+          <span class="breadcrumb-item">Employee portal</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item current">Working hours</span>
+        </div>
+        <div class="header-right">
+          <div class="header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="header-notifications">
+            <span>🔔</span>
+            <span class="notification-dot"></span>
+          </div>
+          <div class="header-user">
+            <div class="user-avatar">LW</div>
+            <span class="user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header">
+          <h1 class="page-title">My working hours</h1>
+          <p class="page-subtitle">Rolled up from published shifts only · period: Sep – Oct 2026</p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">This week</div>
+            <div class="stat-value">24<span class="unit"> h</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">This month</div>
+            <div class="stat-value">64<span class="unit"> h</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Last 4 weeks</div>
+            <div class="stat-value">214<span class="unit"> h</span></div>
+            <div class="stat-sub-info"><span class="over">+6 h</span> above contract in W40</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Absence</div>
+            <div class="stat-value">1<span class="unit"> day</span></div>
+            <div class="stat-sub-info"><span class="absence">sick day, approved</span></div>
+          </div>
+        </div>
+
+        <!-- Hours Chart -->
+        <div class="hours-chart-card">
+          <div class="chart-title">Assigned hours per week</div>
+          <div class="chart-container">
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 60%;">
+                <span class="chart-bar-tooltip">W35: 24 h</span>
+              </div>
+              <span class="chart-bar-label">W35</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 75%;">
+                <span class="chart-bar-tooltip">W36: 30 h</span>
+              </div>
+              <span class="chart-bar-label">W36</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 45%;">
+                <span class="chart-bar-tooltip">W37: 18 h</span>
+              </div>
+              <span class="chart-bar-label">W37</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 80%;">
+                <span class="chart-bar-tooltip">W38: 32 h</span>
+              </div>
+              <span class="chart-bar-label">W38</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 70%;">
+                <span class="chart-bar-tooltip">W39: 28 h</span>
+              </div>
+              <span class="chart-bar-label">W39</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 95%;">
+                <span class="chart-bar-tooltip">W40: 44 h</span>
+              </div>
+              <span class="chart-bar-label">W40</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 78%;">
+                <span class="chart-bar-tooltip">W41: 32 h</span>
+              </div>
+              <span class="chart-bar-label">W41</span>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar current" style="height: 60%;">
+                <span class="chart-bar-tooltip">W42: 24 h</span>
+              </div>
+              <span class="chart-bar-label">W42</span>
+            </div>
+          </div>
+          <p class="chart-note">
+            Bar height = assigned hours from the published schedule. Values are not attendance data: this release does not measure the hours actually worked.
+          </p>
+        </div>
+
+        <!-- Detail by Week Table -->
+        <div class="detail-table-card">
+          <div class="detail-table-header">
+            <span class="detail-table-title">Detail by week</span>
+            <span class="detail-table-note">ⓘ week = link back to UC-E02 for that week</span>
+          </div>
+          <div class="table-container">
+            <table class="detail-table">
+              <thead>
+                <tr>
+                  <th>WEEK</th>
+                  <th>PERIOD</th>
+                  <th>SHIFTS</th>
+                  <th>MORNING</th>
+                  <th>AFTERNOON</th>
+                  <th>EVENING</th>
+                  <th>HOURS</th>
+                  <th>CONTRACT</th>
+                  <th>DIFFERENCE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="shifts.html" class="week-link">W42</a></td>
+                  <td>12–18 Oct</td>
+                  <td>4</td>
+                  <td>16 h</td>
+                  <td>4 h</td>
+                  <td>12 h</td>
+                  <td><strong>32 h</strong></td>
+                  <td>38 h</td>
+                  <td><span class="diff-negative">−6 h</span></td>
+                </tr>
+                <tr>
+                  <td><a href="shifts.html" class="week-link">W41</a></td>
+                  <td>5–11 Oct</td>
+                  <td>5</td>
+                  <td>16 h</td>
+                  <td>4 h</td>
+                  <td>12 h</td>
+                  <td><strong>32 h</strong></td>
+                  <td>38 h</td>
+                  <td><span class="diff-negative">−6 h</span></td>
+                </tr>
+                <tr>
+                  <td><a href="shifts.html" class="week-link">W40</a></td>
+                  <td>28 Sep–4 Oct</td>
+                  <td>6</td>
+                  <td>24 h</td>
+                  <td>4 h</td>
+                  <td>16 h</td>
+                  <td><strong>44 h</strong></td>
+                  <td>38 h</td>
+                  <td><span class="diff-positive">+6 h</span></td>
+                </tr>
+                <tr>
+                  <td><a href="shifts.html" class="week-link">W39</a></td>
+                  <td>21–27 Sep</td>
+                  <td>5</td>
+                  <td>16 h</td>
+                  <td>8 h</td>
+                  <td>12 h</td>
+                  <td><strong>36 h</strong></td>
+                  <td>38 h</td>
+                  <td><span class="diff-negative diff-positive-small">−2 h</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

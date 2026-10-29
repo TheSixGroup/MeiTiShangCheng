@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In - Meitǐ Shāngchéng</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="../employee/css/login.css">
+</head>
+<body>
+  <div class="login-wrapper">
+    <!-- Left: Brand Panel -->
+    <div class="login-brand">
+      <div class="login-brand-header">
+        <div class="brand-logo">美</div>
+        <h1 class="brand-title">Meitǐ Shāngchéng</h1>
+        <p class="brand-subtitle">Administration & Operations Portal</p>
+        <p class="brand-description">
+          Website 2 is the administration portal for HR, Workflow Managers, and Warehouse staff. Manage employees, create schedules, handle inventory, and view workforce statistics.
+        </p>
+      </div>
+
+      <div class="login-brand-footer">
+        <ul class="brand-features">
+          <li>Employee records management (HR)</li>
+          <li>Weekly shift planning & publishing</li>
+          <li>Store-wide schedule overview</li>
+          <li>Workforce statistics & reports</li>
+          <li>Inventory & restock management</li>
+        </ul>
+        <p class="brand-footer-note">
+          UI language: English only · colours follow the Meitǐ Shāngchéng / Jupiter brand identity
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="login-form-panel">
+      <div class="login-form-container">
+        <div class="login-form-header">
+          <h2 class="login-form-title">Administration sign in</h2>
+          <p class="login-form-subtitle">Website 2 · management portal</p>
+        </div>
+
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input type="text" class="form-control" id="username" value="hr01" placeholder="Enter your username">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" value="123456" placeholder="Enter your password">
+          </div>
+
+          <div class="login-form-remember">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <div id="loginError" style="color: #e74c3c; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+
+          <button type="submit" class="btn btn-primary btn-login" id="loginBtn">Sign in</button>
+        </form>
+
+  <script src="../shared/js/api.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script>
+    // If already logged in, redirect to dashboard
+    if (isLoggedIn()) {
+      const role = getCurrentRole();
+      const redirectMap = {
+        'hr_officer': 'employees.html',
+        'shift_manager': 'shift-planner.html',
+        'warehouse_worker': 'inventory.html',
+        'manager': 'employees.html'
+      };
+      window.location.href = redirectMap[role] || 'employees.html';
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('loginError');
+      const loginBtn = document.getElementById('loginBtn');
+
+      if (!username || !password) {
+        errorEl.textContent = '请输入用户名和密码';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Signing in...';
+
+      const result = await api.login(username, password);
+
+      if (result.code === 0 && result.data) {
+        // Save token and user info
+        setToken(result.data.token);
+        setCurrentUser(result.data.userInfo);
+        
+        const role = result.data.userInfo.roles[0];
+        login(username, role);
+
+        // Redirect based on role
+        const redirectMap = {
+          'hr_officer': 'employees.html',
+          'shift_manager': 'shift-planner.html',
+          'warehouse_worker': 'inventory.html',
+          'manager': 'employees.html'
+        };
+        window.location.href = redirectMap[role] || 'employees.html';
+      } else {
+        errorEl.textContent = result.message || '登录失败，请检查用户名和密码';
+        errorEl.style.display = 'block';
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Sign in';
+      }
+    }
+  </script>
+
+        <p class="login-forgot">
+          Forgot password? <a href="#">Ask the system administrator</a>
+        </p>
+
+        <div class="login-alt-action">
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='../employee/login.html'">
+            ← Sign in as Employee (Website 1)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

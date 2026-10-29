@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "id": 1,
+      "code": "morning",
+      "name": "Morning Shift",
+      "startTime": "08:00",
+      "endTime": "16:00",
+      "duration": 8,
+      "color": "#2D6DB5",
+      "description": "早班"
+    },
+    {
+      "id": 2,
+      "code": "afternoon",
+      "name": "Afternoon Shift",
+      "startTime": "12:00",
+      "endTime": "20:00",
+      "duration": 8,
+      "color": "#D49000",
+      "description": "午班"
+    },
+    {
+      "id": 3,
+      "code": "evening",
+      "name": "Evening Shift",
+      "startTime": "16:00",
+      "endTime": "22:00",
+      "duration": 6,
+      "color": "#6B3FA0",
+      "description": "晚班"
+    }
+  ]
+}

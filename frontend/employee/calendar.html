@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Calendar - Meitǐ Shāngchéng Employee Portal</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/calendar.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">美</div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="sidebar-brand-sub">Employee Shift Portal</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="shifts.html" class="nav-item">
+          <span class="nav-item-icon">📅</span>
+          <span class="nav-item-text">My shift schedule</span>
+          <span class="nav-item-code">UC-E02</span>
+        </a>
+        <a href="calendar.html" class="nav-item active">
+          <span class="nav-item-icon">📆</span>
+          <span class="nav-item-text">Monthly calendar</span>
+          <span class="nav-item-code">UC-E03</span>
+        </a>
+        <a href="hours.html" class="nav-item">
+          <span class="nav-item-icon">⏱️</span>
+          <span class="nav-item-text">Working hours</span>
+          <span class="nav-item-code">UC-E04</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <span class="nav-item-icon">👤</span>
+          <span class="nav-item-text">Personal data</span>
+          <span class="nav-item-code">UC-E05</span>
+        </a>
+        <a href="absence.html" class="nav-item">
+          <span class="nav-item-icon">📝</span>
+          <span class="nav-item-text">Report absence</span>
+          <span class="nav-item-code">UC-E07</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="login.html" class="nav-item">
+          <span class="nav-item-icon">🚪</span>
+          <span class="nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-name">Li Wei · #1042</div>
+        <div class="sidebar-user-role">Role: Employee · view-only</div>
+        <div class="sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-breadcrumb">
+          <span class="breadcrumb-item">Employee portal</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item current">Monthly calendar</span>
+        </div>
+        <div class="header-right">
+          <div class="header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="header-notifications">
+            <span>🔔</span>
+            <span class="notification-dot"></span>
+          </div>
+          <div class="header-user">
+            <div class="user-avatar">LW</div>
+            <span class="user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header">
+          <h1 class="page-title">October 2026 — my calendar</h1>
+          <p class="page-subtitle">Every shift assigned to you this month · 10 shifts · 74 h</p>
+        </div>
+
+        <div class="content-grid two-col">
+          <div>
+            <!-- Calendar Navigation -->
+            <div class="calendar-nav-card">
+              <div class="calendar-nav-left">
+                <span class="calendar-title">October 2026</span>
+                <div class="calendar-nav-buttons">
+                  <button class="calendar-nav-btn">‹ Sep</button>
+                  <button class="calendar-nav-btn active">This month</button>
+                  <button class="calendar-nav-btn">Nov ›</button>
+                </div>
+              </div>
+              <span class="calendar-nav-note">ⓘ month navigation ⓘ one tag per shift ⓘ rest day</span>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div class="calendar-grid-wrapper">
+              <div class="calendar-grid">
+                <!-- Weekday headers -->
+                <div class="calendar-weekday">Mon</div>
+                <div class="calendar-weekday">Tue</div>
+                <div class="calendar-weekday">Wed</div>
+                <div class="calendar-weekday">Thu</div>
+                <div class="calendar-weekday">Fri</div>
+                <div class="calendar-weekday">Sat</div>
+                <div class="calendar-weekday">Sun</div>
+
+                <!-- Week 1: Sep 29 - Oct 5 -->
+                <div class="calendar-day other-month">
+                  <div class="calendar-day-number">29</div>
+                </div>
+                <div class="calendar-day other-month">
+                  <div class="calendar-day-number">30</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">1</div>
+                  <div class="calendar-shift-tag morning">M 08–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">2</div>
+                  <div class="calendar-shift-tag afternoon">A 12–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">3</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">4</div>
+                  <div class="calendar-shift-tag evening">E 16–20</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">5</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+
+                <!-- Week 2: Oct 6-12 -->
+                <div class="calendar-day">
+                  <div class="calendar-day-number">6</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">7</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">8</div>
+                  <div class="calendar-shift-tag morning">M 08–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">9</div>
+                  <div class="calendar-shift-tag evening">E 16–20</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">10</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">11</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">12</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+
+                <!-- Week 3: Oct 13-19 -->
+                <div class="calendar-day">
+                  <div class="calendar-day-number">13</div>
+                  <div class="calendar-shift-tag morning">M 08–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">14</div>
+                  <div class="calendar-shift-tag evening">E 16–20</div>
+                </div>
+                <div class="calendar-day today">
+                  <div class="calendar-day-number">15</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">16</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">17</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">18</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">19</div>
+                </div>
+
+                <!-- Week 4: Oct 20-26 -->
+                <div class="calendar-day">
+                  <div class="calendar-day-number">20</div>
+                  <div class="calendar-shift-tag afternoon">A 12–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">21</div>
+                  <div class="calendar-shift-tag morning">M 08–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">22</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">23</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">24</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">25</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">26</div>
+                  <div class="calendar-rest-tag">rest</div>
+                </div>
+
+                <!-- Week 5: Oct 27-31 + Nov 1-2 -->
+                <div class="calendar-day">
+                  <div class="calendar-day-number">27</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">28</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">29</div>
+                  <div class="calendar-shift-tag afternoon">A 12–16</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">30</div>
+                </div>
+                <div class="calendar-day">
+                  <div class="calendar-day-number">31</div>
+                </div>
+                <div class="calendar-day other-month">
+                  <div class="calendar-day-number">1</div>
+                </div>
+                <div class="calendar-day other-month">
+                  <div class="calendar-day-number">2</div>
+                </div>
+              </div>
+
+              <p class="calendar-grid-note">
+                A day holds at most one shift (Project Plan §8: Morning / Afternoon / Evening). Empty days are either rest days or weeks that are not published yet — week 43 is published on Friday.
+              </p>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="side-panel">
+            <!-- This Month Stats -->
+            <div class="info-card">
+              <div class="info-card-title">This month</div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th style="text-align:right;">VALUE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Shifts</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>Morning</td>
+                    <td>4 × 8 h</td>
+                  </tr>
+                  <tr>
+                    <td>Afternoon</td>
+                    <td>2 × 4 h</td>
+                  </tr>
+                  <tr>
+                    <td>Evening</td>
+                    <td>4 × 4 h</td>
+                  </tr>
+                  <tr class="total-row">
+                    <td>Total hours</td>
+                    <td>64 h</td>
+                  </tr>
+                  <tr>
+                    <td>Contract month</td>
+                    <td>152 h</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="progress-label">
+                <span>Planned so far</span>
+                <span class="value">42 %</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style="width: 42%;"></div>
+              </div>
+            </div>
+
+            <!-- Not Published Yet -->
+            <div class="not-published-card">
+              <div class="not-published-title">Not published yet</div>
+              <div class="not-published-text">
+                <strong>Week 43 (19–25 Oct)</strong> has not been published by the Workflow Manager. Nothing can be done here: the employee portal is read-only for shifts.
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="info-card legend-card">
+              <div class="info-card-title">Legend</div>
+              <div class="legend-list">
+                <div class="legend-item-sm">
+                  <span class="dot" style="background-color: var(--shift-morning);"></span>
+                  <span>M</span>
+                </div>
+                <div class="legend-item-sm">
+                  <span class="dot" style="background-color: var(--shift-afternoon);"></span>
+                  <span>A</span>
+                </div>
+                <div class="legend-item-sm">
+                  <span class="dot" style="background-color: var(--shift-evening);"></span>
+                  <span>E</span>
+                </div>
+                <div class="legend-item-sm">
+                  <span class="dot" style="background-color: var(--shift-rest);"></span>
+                  <span>Rest</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

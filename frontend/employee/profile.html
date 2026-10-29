@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Data - Meitǐ Shāngchéng Employee Portal</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">美</div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="sidebar-brand-sub">Employee Shift Portal</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="shifts.html" class="nav-item">
+          <span class="nav-item-icon">📅</span>
+          <span class="nav-item-text">My shift schedule</span>
+          <span class="nav-item-code">UC-E02</span>
+        </a>
+        <a href="calendar.html" class="nav-item">
+          <span class="nav-item-icon">📆</span>
+          <span class="nav-item-text">Monthly calendar</span>
+          <span class="nav-item-code">UC-E03</span>
+        </a>
+        <a href="hours.html" class="nav-item">
+          <span class="nav-item-icon">⏱️</span>
+          <span class="nav-item-text">Working hours</span>
+          <span class="nav-item-code">UC-E04</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+          <span class="nav-item-icon">👤</span>
+          <span class="nav-item-text">Personal data</span>
+          <span class="nav-item-code">UC-E05</span>
+        </a>
+        <a href="absence.html" class="nav-item">
+          <span class="nav-item-icon">📝</span>
+          <span class="nav-item-text">Report absence</span>
+          <span class="nav-item-code">UC-E07</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="login.html" class="nav-item">
+          <span class="nav-item-icon">🚪</span>
+          <span class="nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-name">Li Wei · #1042</div>
+        <div class="sidebar-user-role">Role: Employee · view-only</div>
+        <div class="sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-breadcrumb">
+          <span class="breadcrumb-item">Employee portal</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item current">Personal data</span>
+        </div>
+        <div class="header-right">
+          <div class="header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="header-notifications">
+            <span>🔔</span>
+            <span class="notification-dot"></span>
+          </div>
+          <div class="header-user">
+            <div class="user-avatar">LW</div>
+            <span class="user-name">Li Wei</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header">
+          <h1 class="page-title">My personal data</h1>
+          <p class="page-subtitle">View and update your personal information · some fields are read-only</p>
+        </div>
+
+        <div class="content-grid two-col">
+          <div>
+            <!-- Profile Header -->
+            <div class="profile-header" style="border-radius: var(--border-radius-lg); margin-bottom: 20px;">
+              <div class="profile-avatar-lg">LW</div>
+              <div class="profile-info">
+                <h2 class="profile-name">Li Wei</h2>
+                <div class="profile-id">Employee ID: #1042</div>
+                <div class="profile-role">
+                  <span class="badge badge-primary">Sales Associate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Info -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Personal information</div>
+                  <div class="profile-card-subtitle">You can update your contact details and address</div>
+                </div>
+                <button class="btn btn-primary btn-sm" id="editBtn" onclick="toggleEdit()">Edit</button>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid" id="profileForm">
+                  <div class="form-group">
+                    <label class="form-label">Full name</label>
+                    <input type="text" class="form-control" value="Li Wei" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Employee ID</label>
+                    <input type="text" class="form-control" value="#1042" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <input type="text" class="form-control" value="Sales Associate" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Store</label>
+                    <input type="text" class="form-control" value="Zhengzhou flagship" disabled>
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Home address</label>
+                    <input type="text" class="form-control" value="Xueyuan Road 5, Zhengzhou" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" value="+86 137 **** 9012" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Store e-mail</label>
+                    <input type="email" class="form-control" value="li.wei@meiti-sc.com" disabled>
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Start date</label>
+                    <input type="text" class="form-control" value="15 March 2024" disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contract Info -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Contract information</div>
+                  <div class="profile-card-subtitle">Managed by HR · contact your manager for changes</div>
+                </div>
+              </div>
+              <div class="profile-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <div class="field-label">Contract type</div>
+                    <div class="field-value">Full-time · 38 h / week</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="field-label">Hourly wage</div>
+                    <div class="field-value muted">—</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="field-label">Probation end</div>
+                    <div class="field-value">15 June 2024</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="field-label">Status</div>
+                    <div class="field-value"><span class="badge badge-success">Active</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Leave History -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <div>
+                  <div class="profile-card-title">Leave history</div>
+                  <div class="profile-card-subtitle">Recent absence requests</div>
+                </div>
+                <a href="absence.html" class="btn btn-secondary btn-sm">Report absence</a>
+              </div>
+              <div class="profile-card-body">
+                <ul class="absence-history">
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">08</div>
+                      <div class="absence-date-month">Oct</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Sick day — 1 day</div>
+                      <div class="absence-item-detail">Flu symptoms · reported same day at 07:20</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">15</div>
+                      <div class="absence-date-month">Sep</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Personal leave — 1 day</div>
+                      <div class="absence-item-detail">Family appointment · requested 3 days in advance</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                  <li class="absence-history-item">
+                    <div class="absence-date-badge">
+                      <div class="absence-date-day">22</div>
+                      <div class="absence-date-month">Aug</div>
+                    </div>
+                    <div class="absence-item-content">
+                      <div class="absence-item-title">Sick day — 1 day</div>
+                      <div class="absence-item-detail">Headache and fatigue · reported same day</div>
+                    </div>
+                    <div class="absence-item-status">
+                      <span class="badge badge-success">Approved</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="side-panel">
+            <!-- Leave Balance -->
+            <div class="info-card leave-balance-card">
+              <div class="info-card-title">Leave balance · 2026</div>
+              <div class="leave-balance-number">7</div>
+              <div class="leave-balance-label">days remaining</div>
+              <div class="leave-balance-breakdown">
+                <div>
+                  <span class="lbl">Annual entitlement</span>
+                  <span class="val">10 days</span>
+                </div>
+                <div>
+                  <span class="lbl">Taken this year</span>
+                  <span class="val">3 days</span>
+                </div>
+                <div>
+                  <span class="lbl">Sick days used</span>
+                  <span class="val">2 days</span>
+                </div>
+                <div>
+                  <span class="lbl">Pending requests</span>
+                  <span class="val">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="info-card">
+              <div class="info-card-title">Quick actions</div>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn btn-primary" onclick="location.href='absence.html'">
+                  Report an absence
+                </button>
+                <button class="btn btn-secondary">
+                  Change password
+                </button>
+                <button class="btn btn-secondary">
+                  Download payslip
+                </button>
+              </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="store-info-card">
+              <div class="store-info-title">Need help?</div>
+              <div class="store-info-text">
+                For questions about your contract, salary or personal data, contact HR at <strong>hr@meiti-sc.com</strong>.<br><br>
+                For shift-related questions, talk to your Workflow Manager <strong>Zhou Qi</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let isEditing = false;
+
+    function toggleEdit() {
+      isEditing = !isEditing;
+      const btn = document.getElementById('editBtn');
+      const inputs = document.querySelectorAll('#profileForm input:not([value="Li Wei"]):not([value="#1042"]):not([value="Sales Associate"]):not([value="Zhengzhou flagship"]):not([value="li.wei@meiti-sc.com"]):not([value="15 March 2024"])');
+
+      if (isEditing) {
+        btn.textContent = 'Save';
+        // Enable editable fields
+        const editFields = document.querySelectorAll('#profileForm input');
+        editFields.forEach((input, index) => {
+          // Only enable address, phone fields (indices 4, 5)
+          if (index === 4 || index === 5) {
+            input.disabled = false;
+            input.focus();
+          }
+        });
+      } else {
+        btn.textContent = 'Edit';
+        // Save and disable
+        const editFields = document.querySelectorAll('#profileForm input');
+        editFields.forEach(input => {
+          input.disabled = true;
+        });
+      }
+    }
+  </script>
+</body>
+</html>

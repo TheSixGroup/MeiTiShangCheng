@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "totalEmployees": 24,
+    "activeEmployees": 22,
+    "newThisMonth": 3,
+    "departuresThisMonth": 1,
+    "byRole": [
+      { "role": "sales_associate", "roleLabel": "Sales Associate", "count": 12, "percentage": 50.0 },
+      { "role": "warehouse_employee", "roleLabel": "Warehouse Employee", "count": 4, "percentage": 16.7 },
+      { "role": "shift_manager", "roleLabel": "Workflow Manager", "count": 2, "percentage": 8.3 },
+      { "role": "hr_officer", "roleLabel": "HR Officer", "count": 3, "percentage": 12.5 },
+      { "role": "manager", "roleLabel": "Store Management", "count": 1, "percentage": 4.2 },
+      { "role": "cashier", "roleLabel": "Cashier", "count": 2, "percentage": 8.3 }
+    ],
+    "byDepartment": [
+      { "department": "Sales", "count": 14, "percentage": 58.3 },
+      { "department": "Warehouse", "count": 4, "percentage": 16.7 },
+      { "department": "HR", "count": 3, "percentage": 12.5 },
+      { "department": "Management", "count": 3, "percentage": 12.5 }
+    ],
+    "avgHourlyWage": 28.50,
+    "totalWeeklyHours": 760
+  }
+}

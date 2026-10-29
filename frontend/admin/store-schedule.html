@@ -1,0 +1,645 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Schedule - Meitǐ Shāngchéng Admin</title>
+  <link rel="stylesheet" href="../shared/css/variables.css">
+  <link rel="stylesheet" href="../shared/css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/planner.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-brand">
+        <div class="admin-sidebar-logo">美</div>
+        <div class="admin-sidebar-brand-text">
+          <div class="admin-sidebar-brand-name">Meitǐ Shāngchéng</div>
+          <div class="admin-sidebar-brand-sub">Administration & Operations Portal</div>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-sub-label">Employees</div>
+        <a href="employees.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">👥</span>
+          <span class="admin-nav-item-text">Employee overview</span>
+          <span class="admin-nav-item-code">UC-A02</span>
+        </a>
+        <a href="employee-edit.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📋</span>
+          <span class="admin-nav-item-text">Manage records</span>
+          <span class="admin-nav-item-code">UC-A01</span>
+        </a>
+        <a href="employee-add.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">➕</span>
+          <span class="admin-nav-item-text">Add employee</span>
+          <span class="admin-nav-item-code">UC-A01a</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Scheduling</div>
+        <a href="shift-planner.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📅</span>
+          <span class="admin-nav-item-text">Shift planner</span>
+          <span class="admin-nav-item-code">UC-A03</span>
+        </a>
+        <a href="store-schedule.html" class="admin-nav-item active">
+          <span class="admin-nav-item-icon">🏪</span>
+          <span class="admin-nav-item-text">Store schedule</span>
+          <span class="admin-nav-item-code">UC-A04</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Reports</div>
+        <a href="stats.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📊</span>
+          <span class="admin-nav-item-text">Workforce statistics</span>
+          <span class="admin-nav-item-code">UC-A09</span>
+        </a>
+
+        <div class="admin-nav-sub-label">Inventory</div>
+        <a href="inventory.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">📦</span>
+          <span class="admin-nav-item-text">Stock & restock</span>
+          <span class="admin-nav-item-code">UC-A10</span>
+        </a>
+
+        <div class="admin-sidebar-divider"></div>
+
+        <a href="login.html" class="admin-nav-item">
+          <span class="admin-nav-item-icon">🚪</span>
+          <span class="admin-nav-item-text">Sign out</span>
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-user">
+        <div class="admin-sidebar-user-name">Zhou Qi · #1048</div>
+        <div class="admin-sidebar-user-role">Role: Workflow Manager</div>
+        <div class="admin-sidebar-user-store">Store: Zhengzhou flagship</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-top-header">
+        <div class="admin-header-breadcrumb">
+          <span class="admin-breadcrumb-item">Shift planning</span>
+          <span class="admin-breadcrumb-separator">/</span>
+          <span class="admin-breadcrumb-item current">Store schedule</span>
+        </div>
+        <div class="admin-header-right">
+          <div class="admin-header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="admin-header-notifications">
+            <span>🔔</span>
+            <span class="admin-notification-dot"></span>
+          </div>
+          <div class="admin-header-user">
+            <div class="admin-user-avatar">ZQ</div>
+            <span class="admin-user-name">Zhou Qi</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-page-content">
+        <div class="admin-page-header">
+          <h1 class="admin-page-title">
+            Store schedule — week 42
+            <span class="planner-status-badge published">published 8 Oct</span>
+          </h1>
+          <p class="admin-page-subtitle">Mon 12 – Sun 18 Oct 2026 · every shift of the store in one reliable overview</p>
+        </div>
+
+        <!-- Store Schedule Grid -->
+        <div class="planner-grid-card">
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">All shifts per day</div>
+            <div style="font-size: 11px; color: #B8860B; font-weight: 500;">
+              ⓘ employee chip → that person's shifts ⓘ filter by day / shift / role
+            </div>
+          </div>
+
+          <div class="planner-legend">
+            <div class="legend-item">
+              <span class="legend-dot morning"></span>
+              <span>Morning 08:00–16:00 · 8 h</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot afternoon"></span>
+              <span>Afternoon 12:00–16:00 · 4 h</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot evening"></span>
+              <span>Evening 16:00–20:00 · 4 h</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot rest"></span>
+              <span>Rest / not assigned</span>
+            </div>
+          </div>
+
+          <div class="planner-week" style="margin-top: 16px;">
+            <!-- Monday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Mon 12 Oct</div>
+                </div>
+                <div class="planner-day-count">6 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">CM</span>
+                      <span>Chen Min</span>
+                      <span class="employee-chip-role">C</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LW</span>
+                      <span>Li Wei</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">SY</span>
+                      <span>Sun Yue</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WH</span>
+                      <span>Wang Hao</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WF</span>
+                      <span>Wu Fan</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Tue 13 Oct</div>
+                </div>
+                <div class="planner-day-count">5 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LY</span>
+                      <span>Liu Yang</span>
+                      <span class="employee-chip-role">L</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LW</span>
+                      <span>Li Wei</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ML</span>
+                      <span>Ma Lin</span>
+                      <span class="employee-chip-role">M</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WF</span>
+                      <span>Wu Fan</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div class="planner-day active-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Wed 14 Oct</div>
+                </div>
+                <div class="planner-day-count">7 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">CM</span>
+                      <span>Chen Min</span>
+                      <span class="employee-chip-role">C</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WH</span>
+                      <span>Wang Hao</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">SY</span>
+                      <span>Sun Yue</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LY</span>
+                      <span>Liu Yang</span>
+                      <span class="employee-chip-role">L</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LW</span>
+                      <span>Li Wei</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WF</span>
+                      <span>Wu Fan</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thursday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Thu 15 Oct</div>
+                </div>
+                <div class="planner-day-count">5 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">SY</span>
+                      <span>Sun Yue</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ML</span>
+                      <span>Ma Lin</span>
+                      <span class="employee-chip-role">M</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">CM</span>
+                      <span>Chen Min</span>
+                      <span class="employee-chip-role">C</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WH</span>
+                      <span>Wang Hao</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LY</span>
+                      <span>Liu Yang</span>
+                      <span class="employee-chip-role">L</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Friday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Fri 16 Oct</div>
+                </div>
+                <div class="planner-day-count">7 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">CM</span>
+                      <span>Chen Min</span>
+                      <span class="employee-chip-role">C</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LW</span>
+                      <span>Li Wei</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WF</span>
+                      <span>Wu Fan</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">SY</span>
+                      <span>Sun Yue</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WH</span>
+                      <span>Wang Hao</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ML</span>
+                      <span>Ma Lin</span>
+                      <span class="employee-chip-role">M</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saturday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Sat 17 Oct</div>
+                </div>
+                <div class="planner-day-count">6 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">CM</span>
+                      <span>Chen Min</span>
+                      <span class="employee-chip-role">C</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LY</span>
+                      <span>Liu Yang</span>
+                      <span class="employee-chip-role">L</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WH</span>
+                      <span>Wang Hao</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ML</span>
+                      <span>Ma Lin</span>
+                      <span class="employee-chip-role">M</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">WF</span>
+                      <span>Wu Fan</span>
+                      <span class="employee-chip-role">W</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sunday -->
+            <div class="planner-day">
+              <div class="planner-day-header">
+                <div>
+                  <div class="planner-day-name">Sun 18 Oct</div>
+                </div>
+                <div class="planner-day-count">3 p</div>
+              </div>
+              <div class="planner-shifts">
+                <div class="planner-shift-block morning">
+                  <div class="planner-shift-title">Morning</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">LW</span>
+                      <span>Li Wei</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">SY</span>
+                      <span>Sun Yue</span>
+                      <span class="employee-chip-role">S</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="planner-shift-block afternoon">
+                  <div class="planner-shift-title">Afternoon</div>
+                  <div style="padding: 8px; text-align: center; color: var(--text-tertiary); font-size: 11px;">
+                    — No staff —
+                  </div>
+                </div>
+                <div class="planner-shift-block evening">
+                  <div class="planner-shift-title">Evening</div>
+                  <div class="employee-chips">
+                    <div class="employee-chip">
+                      <span class="employee-chip-avatar">ZL</span>
+                      <span>Zhao Lei</span>
+                      <span class="employee-chip-role">Z</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 16px; line-height: 1.5;">
+            Read-only for every role. Changing a published shift is done in the shift planner by the Workflow Manager (UC-A03).
+          </p>
+        </div>
+
+        <!-- Filter + Export -->
+        <div class="admin-content-grid two-col">
+          <!-- Filter Section -->
+          <div class="filter-section">
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Filter</div>
+            <div class="filter-row">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Week</label>
+                <select class="form-control">
+                  <option>W42 · 12–18 Oct</option>
+                  <option>W43 · 19–25 Oct</option>
+                  <option>W41 · 5–11 Oct</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Shift</label>
+                <select class="form-control">
+                  <option>All</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Employee</label>
+                <select class="form-control">
+                  <option>All</option>
+                  <option>Chen Min</option>
+                  <option>Li Wei</option>
+                  <option>Wang Hao</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Status</label>
+                <select class="form-control">
+                  <option>Published</option>
+                  <option>Draft</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Day Detail Table -->
+            <div style="margin-top: 20px;">
+              <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Wednesday 14 October</div>
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>SHIFT</th>
+                      <th>EMPLOYEES</th>
+                      <th style="text-align: right;">HOURS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Morning 08:00–16:00</td>
+                      <td>Chen Min · Wang Hao · Sun Yue</td>
+                      <td style="text-align: right;">24 h</td>
+                    </tr>
+                    <tr>
+                      <td>Afternoon 12:00–16:00</td>
+                      <td>Liu Yang</td>
+                      <td style="text-align: right;">4 h</td>
+                    </tr>
+                    <tr>
+                      <td>Evening 16:00–20:00</td>
+                      <td>Li Wei · Wu Fan · Zhao Lei</td>
+                      <td style="text-align: right;">12 h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export Section -->
+          <div>
+            <div class="export-card">
+              <div class="export-title">Export / print weekly roster — optional</div>
+              <div style="font-size: 11px; color: #B8860B; font-weight: 500; margin-bottom: 12px;">
+                ⓘ extension point: a published week is on screen
+              </div>
+              <div class="export-buttons">
+                <button class="btn btn-primary btn-sm">Export week 42 (PDF)</button>
+                <button class="btn btn-secondary btn-sm">CSV</button>
+                <button class="btn btn-secondary btn-sm">Print board view</button>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">
+                Include columns
+              </div>
+              <input type="text" class="form-control" value="Names · hours · wage (HR only)" style="margin-bottom: 10px;">
+              <div class="export-preview">
+                print preview · A4<br>
+                3 shifts × 7 days
+              </div>
+              <p class="export-note">
+                An &laquo;extend&raquo; of UC-A04: it can be skipped and never changes the schedule. The wage column is only offered to HR and Management.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../shared/js/api.js"></script>`n  <script src="../shared/js/auth.js"></script>
+  <script>
+    requireAuth('store-schedule.html');
+  </script>
+</body>
+</html>
